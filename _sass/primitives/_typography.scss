@@ -1,9 +1,6 @@
-// text variables go here, and some mixins
-
-// primitives - all css/scss variables
+// text variables go here - css/scss as needed, and some mixins
 @import url('https://fonts.googleapis.com/css?family=Poppins:ital,200,300,500,400,600,700,800');
 
-// config: https://type-scale.com/?size=20&scale=1.250&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=500&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
 html {
   font-size: 125%;
 } /*20px*/ //-> 1rem = 20px
