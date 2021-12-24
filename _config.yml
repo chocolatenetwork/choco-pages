@@ -1,1 +1,15 @@
-theme: jekyll-theme-architect
+title: Chocolate Network
+description: Combatting fraud in Crypto to assist our community.
+
+social:
+  - title: discord
+    url: https://discord.gg/HgaNVBeM
+  - title: twitter
+    url: https://twitter.com/ChocNetwork
+#  - title: medium
+#    url: https://medium.com/somewhere    
+  - title: lite paper
+    url: https://tbd/somewhere    
+# Build settings
+markdown: kramdown
+permalink: pretty   
