@@ -10,3 +10,18 @@
   @include head;
 }
 // body looks ugly, give us an 8 column grid with a max width of 1280 heart.
+@mixin eight-column-grid {
+  width: 100%;
+  max-width: 1280px;
+  // edit these margins based on what we see
+  // margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  // auto create grid rows for blocks
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+}
+.main {
+  // Use overrides for nav. The header is 100vw with needed background, but the nav tags stick to the grid columns
+  @include eight-column-grid;
+}

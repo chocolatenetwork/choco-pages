@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<!-- THis is interesting, home inherits from the default layout and has its own content followed at the end by the list of posts. Interesting way of including changing content between nav and footer -->
+{{content}}
+<ul>
+  {% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}">{{post.title}}</a>
+    <span class="post__desc">{{post.description}}</span>
+  </li>
+  {{ post.title }} {% endfor %}
+</ul>
