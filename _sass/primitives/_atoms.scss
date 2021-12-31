@@ -13,3 +13,9 @@
   font-weight: $thick;
 }
 
+@mixin light-text{
+  font-weight: $light;
+}
+.text--light{
+  @include light-text;
+}

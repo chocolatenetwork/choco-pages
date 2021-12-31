@@ -1,5 +1,50 @@
-<nav>
+<!-- <nav>
   {% for item in site.data.nav %}
+  <li>
     <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
-  {% endfor %}
+  </li>
+    {% endfor %}
+</nav> -->
+<nav class="nav nav_social" aria-label="social links">
+  <ul>
+    <li>
+      <a href="https://www.discord.com/somewhere/" target="_blank"><i class="fab fa-discord"></i></a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/somewhere/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </li>
+    <li>
+      <a href="https://www.twitter.com/somewhere/" target="_blank"><i class="fab fa-twitter"></i></a>
+    </li>
+    <li>
+      <a href="https://www.medium.com/in/somewhere/" target="_blank"><i class="fab fa-medium"></i></a>
+    </li>
+  </ul>
 </nav>
+
+<nav class="nav nav_main" aria-label="Site menu">
+  <a class="logo link" href="/#home"
+    ><i class="chocolate"></i><span class="text--light">chocolate <b>network</b></span></a
+  >
+  <ul>
+    <li><a href="/#home">home</a></li>
+    <li><a href="/#about">about</a></li>
+    <li><a href="/#footer">contact</a></li>
+  </ul>
+</nav>
+<script>
+  // make link active if url matches
+  const links = document.querySelectorAll('.nav_main ul li a');
+  const hashChange = function () {
+    var url = window.location.href;
+    for (var i = 0; i < links.length; i++) {
+      if (url.indexOf(links[i].href) > -1) {
+        links[i].classList.add('current');
+      } else {
+        links[i].classList.remove('current');
+      }
+    }
+  };
+  hashChange();
+  window.addEventListener('hashchange', hashChange);
+</script>

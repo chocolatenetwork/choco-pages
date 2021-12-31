@@ -4,4 +4,58 @@
 //  Think of actual classes here. Small structure of layout in parents like how do you place els in an input box.
 // specials
 @import 'primitives';
+@mixin link {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: $headingBold;
+    &:hover {
+      color: lighten(black, 30%);
+    }
+    &:active,&.current {
+      color: $wrap-red;
+    }
+}
+.link {
+  @include link;
+}
+@mixin nav-li {
+  margin-left: 1rem;
+  & > a {
+    @include link;
+  }
+}
+@mixin nav-logo {
+  color: $brown;
+  margin-right: auto;
+}
+@mixin nav {
+  background-color: $primary;
+  width: 100%;
 
+  display: flex;
+  justify-content: end;
+  & > .logo {
+    @include nav-logo;
+  }
+  align-items: center;
+
+  & > ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+
+    & > li {
+      @include nav-li;
+    }
+  }
+}
+
+.nav_social {
+  @include nav;
+  height: 30px;
+}
+.nav_main {
+  @include nav;
+  height: 70px;
+}
