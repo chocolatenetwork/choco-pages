@@ -20,9 +20,53 @@
 @mixin transparent-highlight {
   background-color: $highlight-color;
 }
+/*Element atoms*/
+@mixin link {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: $headingBold;
+  @content;
+  &:active {
+    // Todo: Color visibility
+    color: $wrap-red;
+  }
+}
+@mixin nav_link {
+  &.current {
+    color: $wrap-red;
+  }
+}
+@mixin button {
+  @include link;
+  font-weight: $thick;
+  background-color: $text-color;
+  color: $primary;
+  padding: 0.4rem 0.6rem;
+  display: inline-block;
+  border: none;
+  border-radius: 7px;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-transform: uppercase;
+  &:hover {
+    background-color: $wrap-red;
+    color: white;
+  }
+}
+@mixin button--transparent {
+  background-color: transparent;
+  color: $text-color;
+  border: 1px solid $text-color;
+  &:hover {
+    border: 1px solid transparent;
+    color: white;
+  }
+}
+// traits
 @mixin smooth-scroll {
   scroll-behavior: smooth;
 }
+
 @mixin body-default-misc {
   min-height: 100vh;
 }
@@ -64,4 +108,10 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   @include motion-accessibility;
+}
+.button {
+  @include button;
+}
+.button--transparent {
+  @include button--transparent;
 }

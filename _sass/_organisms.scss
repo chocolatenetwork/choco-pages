@@ -17,13 +17,16 @@
 @mixin twelve-column-grid {
   // a 12 column grid with a max width of 1200 heart.
   display: grid;
-  grid-template-columns: repeat(3, 1fr) repeat(2, 2fr) 5fr;
-  column-gap: 1rem;
+  // grid-template-columns: repeat(3, 1fr) repeat(2, 2fr) 5fr; - Or so I would like. Use even width columns
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 0.5rem;
   max-width: $grid-size;
+  width: 100%;
 }
 
 body {
-  @include grid-center;
+  @include grid-h-center;
+  grid-template-rows: min-content;
 }
 // .footlinks { // when we have a footer
 //   @include footlinks;
@@ -39,13 +42,23 @@ footer {
 }
 .head {
   @include head;
-  @include grid-center;
+  @include grid-h-center;
 }
 .container {
   // Use overrides for nav. The header is 100vw with needed background, but the nav tags stick to the grid columns
   @include twelve-column-grid;
+  height: calc(1.06 * (100vh - 150px));
+  max-height: 675px;
 }
 .land {
   // include the image and place it on the right. Although thanks to kadar, we don't have to explictly. Just a note if you switch to svgs
   @include splash-logo;
+  @include grid-col-span-h;
+  @include inherit-grid;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-size: contain;
+  & > * {
+    grid-column: 1/7;
+  }
 }

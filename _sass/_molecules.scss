@@ -7,13 +7,14 @@
 @mixin inherit-grid {
   display: grid;
   grid-template-columns: inherit;
+  column-gap: inherit;
 }
-@mixin fw-horizontal {
+@mixin grid-col-span-h {
   grid-column: 1 / -1;
 }
-@mixin grid-center {
+@mixin grid-h-center {
   display: grid;
-  place-items: center;
+  justify-items: center;
 }
 @mixin lighten-on-hover {
   color: darken($nav-link-text, 10%);
@@ -27,17 +28,7 @@
     color: darken($nav-link-text, 10%);
   }
 }
-@mixin link {
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-weight: $headingBold;
-  @content;
-  &:active,
-  &.current {
-    // Todo: Color visibility
-    color: $wrap-red;
-  }
-}
+
 @mixin light-link {
   @include link {
     @include lighten-on-hover;
@@ -67,7 +58,7 @@
   & > * {
     max-width: $grid-size;
   }
-  @include grid-center;
+  @include grid-h-center;
   // underline -- create a before el to do this
   @include border(1px, 1px);
 }
@@ -103,8 +94,6 @@
   display: flex;
   justify-content: center;
   font-size: $tiny-text;
-
-
 }
 
 .nav_social {
@@ -126,6 +115,18 @@
 .link--dark {
   @include dark-link;
 }
+.nav .link {
+  @include nav_link;
+}
 .foot_copyright {
   @include foot-cp;
+}
+
+.land_links > ul {
+  @include hr-list-of-links;
+  height: 100%;
+
+  & > li:not(:first-child) {
+    margin-left: 0.5rem;
+  }
 }
