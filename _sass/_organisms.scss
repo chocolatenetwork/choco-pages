@@ -13,7 +13,7 @@
   height: 100px;
   background-color: $premium-dark;
 }
-// we need a parent so we can place header and footer as we want while adhering to the grid
+
 @mixin twelve-column-grid {
   // a 12 column grid with a max width of 1200 heart.
   display: grid;
@@ -49,10 +49,10 @@ footer {
   @include twelve-column-grid;
   // the container should be at least this big but should also allow for stretching
   min-height: calc(1.06 * (100vh - 150px));
-  
 }
 .land {
   // include the image and place it on the right. Although thanks to kadar, we don't have to explictly. Just a note if you switch to svgs
+  // wehave to switch to svgs to retain current config on smaller screens by simply making the switch
   @include splash-logo;
   @include grid-col-span-h;
   @include inherit-grid;
@@ -60,6 +60,6 @@ footer {
   background-position-x: right;
   background-size: contain;
   & > * {
-    grid-column: 1/7;
+    grid-column: span 7;
   }
 }
