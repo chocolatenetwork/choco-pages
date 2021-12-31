@@ -1,4 +1,4 @@
-@import 'colors', 'typography';
+@import 'misc-variables', 'colors', 'typography';
 // atoms
 // mixins go here. Use colors, typography to create bases
 // include default styles for elemental text straight from md
@@ -36,29 +36,35 @@
     color: $wrap-red;
   }
 }
+//--- mixin vars
+$transition-duration: 0.3s;
+$transition-style: ease;
 @mixin button {
   @include link;
   font-weight: $thick;
   background-color: $text-color;
   color: $primary;
-  padding: 0.4rem 0.6rem;
+  padding: 0.4rem 0.65rem;
   display: inline-block;
-  border: none;
-  border-radius: 7px;
+  border: $btn-border solid $text-color;
+  border-radius: 0.5rem;
   box-sizing: border-box;
   cursor: pointer;
   text-transform: uppercase;
+  transition: background-color, border, $transition-duration $transition-style;
   &:hover {
     background-color: $wrap-red;
+    border: $btn-border solid transparent;
     color: white;
   }
 }
+
+// vars---&mixin
+$btn-border: 0.1rem;
 @mixin button--transparent {
   background-color: transparent;
   color: $text-color;
-  border: 1px solid $text-color;
   &:hover {
-    border: 1px solid transparent;
     color: white;
   }
 }

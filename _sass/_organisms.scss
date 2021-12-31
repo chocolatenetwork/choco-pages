@@ -47,8 +47,9 @@ footer {
 .container {
   // Use overrides for nav. The header is 100vw with needed background, but the nav tags stick to the grid columns
   @include twelve-column-grid;
-  height: calc(1.06 * (100vh - 150px));
-  max-height: 675px;
+  // the container should be at least this big but should also allow for stretching
+  min-height: calc(1.06 * (100vh - 150px));
+  
 }
 .land {
   // include the image and place it on the right. Although thanks to kadar, we don't have to explictly. Just a note if you switch to svgs
