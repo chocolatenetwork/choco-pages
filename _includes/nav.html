@@ -23,13 +23,13 @@
 </nav>
 
 <nav class="nav nav_main" aria-label="Site menu">
-  <a class="logo link" href="/#home"
+  <a class="logo link" href={{'/#home' | relative_url}}
     ><i class="chocolate"></i><span class="text--light">chocolate <b>network</b></span></a
   >
   <ul>
-    <li><a href="/#home" class="link link--dark">home</a></li>
-    <li><a href="/#about" class="link link--dark">about</a></li>
-    <li><a href="/#footer" class="link link--dark">contact</a></li>
+    <li><a href={{'/#home' | relative_url}} class="link link--dark">home</a></li>
+    <li><a href={{'/#about' | relative_url}} class="link link--dark">about</a></li>
+    <li><a href={{'/#footer' | relative_url}} class="link link--dark">contact</a></li>
   </ul>
 </nav>
 <script>
