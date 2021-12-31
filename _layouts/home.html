@@ -2,13 +2,13 @@
 layout: default
 ---
 
-<!-- THis is interesting, home inherits from the default layout and has its own content followed at the end by the list of posts. Interesting way of including changing content between nav and footer -->
-{{content}}
-<ul>
-  {% for post in site.posts %}
-  <li>
-    <a href="{{ post.url }}">{{post.title}}</a>
-    <span class="post__desc">{{post.description}}</span>
-  </li>
-  {{ post.title }} {% endfor %}
-</ul>
+<!-- Two sections, one with the text, theother with the image -->
+<!-- add more columns till text fits horizontal -->
+<!-- should wrap when size of screen reduces (could set minmax for grid wrapping to rows) -->
+<!-- Hence, you would have to convert it to svg and set background?? Nah. You could place them over each other. The background then the transparent image, 
+      like acala did. Would be difficult moving around though, but one thing first, first we do horizontal layout -->
+
+<main>
+  <section></section>
+</main>
+<!--  -->

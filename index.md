@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: home
 ---
 
 # A Visual Type Scale
