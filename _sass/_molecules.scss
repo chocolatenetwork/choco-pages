@@ -4,35 +4,54 @@
 //  Think of actual classes here. Small structure of layout in parents like how do you place els in an input box.
 // specials
 @import 'primitives';
+@mixin lighten-on-hover {
+  color: darken($nav-link-text, 10%);
+  &:hover {
+    color: $nav-link-text;
+  }
+}
+@mixin darken-on-hover {
+  color: $nav-link-text;
+  &:hover {
+    color: darken($nav-link-text, 10%);
+  }
+}
 @mixin link {
-  color: black;
   text-decoration: none;
   transition: color 0.3s ease;
   font-weight: $headingBold;
-    &:hover {
-      color: lighten(black, 30%);
-    }
-    &:active,&.current {
-      color: $wrap-red;
-    }
+  @content;
+  &:active,
+  &.current {
+    // Todo: Color visibility
+    color: $wrap-red;
+  }
+}
+@mixin light-link {
+  @include link {
+    @include lighten-on-hover;
+  }
+}
+@mixin dark-link {
+  @include link {
+    @include darken-on-hover;
+  }
 }
 .link {
-  @include link;
+  @include light-link;
+}
+.link--dark {
+  @include dark-link;
 }
 @mixin nav-li {
   margin-left: 1rem;
-  & > a {
-    @include link;
-  }
 }
 @mixin nav-logo {
-  color: $brown;
+  color: $nav-logo-text;
   margin-right: auto;
 }
 @mixin nav {
-  background-color: $primary;
   width: 100%;
-
   display: flex;
   justify-content: end;
   & > .logo {
@@ -46,6 +65,7 @@
     align-items: center;
 
     & > li {
+      font-size: $smaller-text;
       @include nav-li;
     }
   }
@@ -53,9 +73,16 @@
 
 .nav_social {
   @include nav;
+  box-sizing: border-box;
+  padding: 10px;
   height: 30px;
 }
 .nav_main {
   @include nav;
   height: 70px;
+
+  // underline
+  border-width: 1px 0px 1px;
+  border-style: solid;
+  border-color: darken($nav-link-text, 30%);
 }
