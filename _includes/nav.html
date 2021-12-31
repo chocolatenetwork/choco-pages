@@ -1,0 +1,55 @@
+<!-- <nav>
+  {% for item in site.data.nav %}
+  <li>
+    <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
+  </li>
+    {% endfor %}
+</nav> -->
+{%assign discord = site.data.siteconfig[0] %}
+{%assign linkedin = site.data.siteconfig[1] %}
+{%assign twitter = site.data.siteconfig[2] %}
+{%assign medium = site.data.siteconfig[3] %}
+<nav class="nav nav_social" aria-label="social links">
+  <ul>
+    <li>
+      <a href="{{discord.link}}" class="link " target="_blank"><i class="fab light fa-discord fa-fw"></i></a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/company/{{linkedin.company}}" class="link " target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+    </li>
+    <li>
+      <a href="https://twitter.com/{{twitter.user}}" class="link " target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+    </li>
+    <li>
+      <a href="{{medium.user}}" class="link " target="_blank"><i class="fab fa-medium fa-fw"></i></a>
+    </li>
+  </ul>
+</nav>
+<div class="nav-wrap--main">
+<nav class="nav nav_main" aria-label="Site menu">
+  <a class="logo link" href={{'/#home' | relative_url}}
+    ><i class="chocolate"></i><span class="text--light">chocolate <b>network</b></span></a
+  >
+  <ul>
+    <li><a href={{'/#home' | relative_url}} class="link link--dark">home</a></li>
+    <li><a href={{'/#about' | relative_url}} class="link link--dark">about</a></li>
+    <li><a href={{'/#footer' | relative_url}} class="link link--dark">contact</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  // make link active if url matches
+  const links = document.querySelectorAll('.nav_main ul li a');
+  const hashChange = function () {
+    var url = window.location.href;
+    for (var i = 0; i < links.length; i++) {
+      if (url.indexOf(links[i].href) > -1) {
+        links[i].classList.add('current');
+      } else {
+        links[i].classList.remove('current');
+      }
+    }
+  };
+  hashChange();
+  window.addEventListener('hashchange', hashChange);
+</script>
