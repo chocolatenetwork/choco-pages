@@ -4,6 +4,13 @@
 //  Think of actual classes here. Small structure of layout in parents like how do you place els in an input box.
 // specials
 @import 'primitives';
+@mixin inherit-grid {
+  display: grid;
+  grid-template-columns: inherit;
+}
+@mixin fw-horizontal {
+  grid-column: 1 / -1;
+}
 @mixin lighten-on-hover {
   color: darken($nav-link-text, 10%);
   &:hover {
@@ -37,12 +44,7 @@
     @include darken-on-hover;
   }
 }
-.link {
-  @include light-link;
-}
-.link--dark {
-  @include dark-link;
-}
+
 @mixin nav-li {
   margin-left: 1rem;
 }
@@ -50,7 +52,14 @@
   color: $nav-logo-text;
   margin-right: auto;
 }
+@mixin hr-list-of-links {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
 @mixin nav {
+  // @include fw-horizontal;
   width: 100%;
   display: flex;
   justify-content: end;
@@ -60,15 +69,27 @@
   align-items: center;
 
   & > ul {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
+    @include hr-list-of-links;
 
     & > li {
       font-size: $smaller-text;
       @include nav-li;
     }
   }
+}
+@mixin foot-cp {
+  // always-max
+  width: 100%;
+  height: 50px;
+  background-color: $wrap-red;
+
+  text-transform: uppercase;
+  // outline
+  @include border(1px, 0px); // only one: re: moxilla
+  // little centered text footer fn
+  display: flex;
+  justify-content: center;
+  font-size: $tiny-text;
 }
 
 .nav_social {
@@ -82,7 +103,14 @@
   height: 70px;
 
   // underline
-  border-width: 1px 0px 1px;
-  border-style: solid;
-  border-color: darken($nav-link-text, 30%);
+  @include border(1px, 1px);
+}
+.link {
+  @include light-link;
+}
+.link--dark {
+  @include dark-link;
+}
+.foot_copyright {
+  @include foot-cp;
 }

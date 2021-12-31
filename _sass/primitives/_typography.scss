@@ -33,6 +33,8 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: $regular;
   line-height: $line-height;
+
+  text-rendering: optimizeLegibility;
 }
 
 p {

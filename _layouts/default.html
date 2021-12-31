@@ -10,15 +10,16 @@
 
     <title>Document</title>
   </head>
-  <body>
-    <header class="head">{% include nav.html %}</header>
-
-    {{ content }}
-    <footer>
-      <div class="footlinks"></div>
-      <section class="foot">
-        <p>© chocolate network - 2021</p>
-      </section>
-    </footer>
-  </body>
+  <body><main class="container">
+    
+      <header class="head">{% include nav.html %}</header>
+      {{ content }}
+      <footer>
+        <div class="footlinks"></div>
+        <section class="foot_copyright">
+          <p>© chocolate network - 2021</p>
+        </section>
+      </footer>
+    
+  </main></body>
 </html>

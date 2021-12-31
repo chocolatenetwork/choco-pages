@@ -1,60 +1,48 @@
 // think of larger layouts , include overarching grids and the like here.
 @import 'molecules';
+
 @mixin head {
-  // always
-  width: 100%;
+  // @include inherit-grid; --- want to be able to stretch header and leave kids
+  // try to figure out a way of letting it take 100vw without causing overflow.
   height: 100px;
   text-transform: uppercase;
   // background-color: #f4f4f6;
   background-color: $primary;
 }
-@mixin foot {
-  // always-max
-  width: 100vw;
-  height: 50px;
-  background-color: $wrap-red;
 
-  text-transform: uppercase;
-  border-width: 1px 0px 0px; // only one: re: moxilla
-  border-style: solid;
-  border-color: darken($nav-link-text, 30%);
-  // little centered text footer fn
-  display: flex;
-  justify-content: center;
-  font-size: $tiny-text;
-}
 @mixin footlinks {
   width: 100vw;
   height: 100px;
   background-color: $premium-dark;
 }
-
+// we need a parent so we can place header and footer as we want while adhering to the grid
+@mixin twelve-column-grid {
+  // a 12 column grid with a max width of 1200 heart.
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) repeat(2, 2fr) 5fr;
+  column-gap: 1rem;
+  max-width: 1200px;
+}
+body {
+  display: grid;
+  place-items: center;
+}
 // .footlinks { // when we have a footer
 //   @include footlinks;
 // }
-.foot {
-  @include foot;
+
+footer {
+  @include fw-horizontal;
 }
 .head {
   @include head;
+  @include fw-horizontal;
 }
-// body looks ugly, give us an 8 column grid with a max width of 1280 heart.
-@mixin eight-column-grid {
-  width: 100vw;
-  max-width: 1280px;
-  // edit these margins based on what we see
-  // margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  // auto create grid rows for blocks
-  grid-auto-rows: auto;
-  grid-gap: 20px;
-}
-.main {
+.container {
   // Use overrides for nav. The header is 100vw with needed background, but the nav tags stick to the grid columns
-  @include eight-column-grid;
+  @include twelve-column-grid;
 }
-body {
-  background-color: $primary;
-  color: $text-color;
+.land {
+  // include the image and place it on the right. Although thanks to kadar, we don't have to explictly. Just a note if you switch to svgs
+  @include splash-logo;
 }

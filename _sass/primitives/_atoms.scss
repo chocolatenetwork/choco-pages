@@ -13,9 +13,55 @@
   font-weight: $thick;
 }
 
-@mixin light-text{
+@mixin light-text {
   font-weight: $light;
 }
-.text--light{
+
+@mixin transparent-highlight {
+  background-color: $highlight-color;
+}
+@mixin smooth-scroll {
+  scroll-behavior: smooth;
+}
+@mixin body-default-misc {
+  min-height: 100vh;
+}
+@mixin motion-accessibility {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@mixin splash-logo {
+  background-image: url(../images/choc-splash.png);
+}
+@mixin border($top, $bottom) {
+  // outline
+  border-width: $top 0px $bottom; // only one: re: moxilla
+  border-style: solid;
+  border-color: darken($nav-link-text, 30%);
+}
+::selection {
+  @include transparent-highlight;
+}
+.text--light {
   @include light-text;
+}
+
+// misc traits describing behaviour of organisms (cannot standalone, hence atomic).
+html:focus-within {
+  @include smooth-scroll;
+}
+body {
+  @include body-default-misc;
+}
+@media (prefers-reduced-motion: reduce) {
+  @include motion-accessibility;
 }
