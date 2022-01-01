@@ -14,23 +14,19 @@
   background-color: $premium-dark;
 }
 
+$grid-gap: 1rem;
 @mixin twelve-column-grid {
   // a 12 column grid with a max width of 1200 heart.
   display: grid;
   // grid-template-columns: repeat(3, 1fr) repeat(2, 2fr) 5fr; - Or so I would like. Use even width columns
   grid-template-columns: repeat(12, 1fr);
-  column-gap: 0.5rem;
+  gap: $grid-gap;
   max-width: $grid-size;
   width: 100%;
-}
-// utils -- move to organism_utils later on then leave actual organism components here
-@mixin grid-col-span($no) {
-  grid-column: span $no;
 }
 
 body {
   @include grid-h-center;
-  grid-template-rows: min-content;
 }
 // .footlinks { // when we have a footer
 //   @include footlinks;
@@ -49,8 +45,17 @@ footer {
   @include grid-h-center;
 }
 // ------------------Begin infinite scroll section--------------------
+
+// utils
+.grid-col-span-7 {
+  @include grid-col-span(7);
+}
+.grid-col-span-5 {
+  @include grid-col-span(5);
+}
+
+// organisms
 .container {
-  // Use overrides for nav. The header is 100vw with needed background, but the nav tags stick to the grid columns
   @include twelve-column-grid;
   // the container should be at least this big but should also allow for stretching
   min-height: calc(1.06 * (100vh - 150px));
@@ -60,16 +65,17 @@ footer {
   }
 }
 .land {
-  // include the image and place it on the right. Although thanks to kadar, we don't have to explictly. Just a note if you switch to svgs
-  // wehave to switch to svgs to retain current config on smaller screens by simply making the switch
+  // This config isn't applied globally from .container yet because other cards may not span full horizontal
+  // But most will want to inerit the grid. Just...less complexity by being more specific up front.
+  // Though, this is the needed config.
   @include grid-col-span-h;
   @include inherit-grid;
 }
-// util classes == related to .land
-.grid-col-span-7 {
-  @include grid-col-span(7);
+.land > :last-child {
+  grid-column: 8 / span 5; // Change if grid size changes
+  grid-row-start: 1;
+  grid-row-end: 3;
+  padding: 1rem 0;
 }
-.grid-col-span-5 {
-  @include grid-col-span(5);
-}
+
 // -----------------End infinite scroll section ------------------------\\

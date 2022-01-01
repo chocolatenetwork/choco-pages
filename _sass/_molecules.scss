@@ -4,30 +4,7 @@
 //  Think of actual classes here. Small structure of layout in parents like how do you place els in an input box.
 // specials
 @import 'primitives';
-@mixin inherit-grid {
-  display: grid;
-  grid-template-columns: inherit;
-  column-gap: inherit;
-}
-@mixin grid-col-span-h {
-  grid-column: 1 / -1;
-}
-@mixin grid-h-center {
-  display: grid;
-  justify-items: center;
-}
-@mixin lighten-on-hover {
-  color: darken($nav-link-text, 10%);
-  &:hover {
-    color: $nav-link-text;
-  }
-}
-@mixin darken-on-hover {
-  color: $nav-link-text;
-  &:hover {
-    color: darken($nav-link-text, 10%);
-  }
-}
+@import 'molecule_utils';
 
 @mixin light-link {
   @include link {
@@ -124,6 +101,7 @@
 
 .land_links > ul {
   @include hr-list-of-links;
+  align-items: start;
   height: 100%;
 
   & > li:not(:first-child) {
