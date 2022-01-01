@@ -91,9 +91,7 @@ $btn-border: 0.1rem;
     scroll-behavior: auto !important;
   }
 }
-@mixin splash-logo {
-  background-image: url(../images/choc-splash.png);
-}
+
 @mixin border($top, $bottom) {
   // outline
   border-width: $top 0px $bottom; // only one: re: moxilla

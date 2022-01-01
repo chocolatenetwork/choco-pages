@@ -14,12 +14,12 @@ layout: default
 
 <main class="land">
   <!-- From the image, There are only two rows here, and each has its content at the bottom -->
-  <section class="land_formsection">
+  <section class="land_formsection grid-col-span-7">
     <h1 class="text--thick">Building a safer Web 3.0 future for all.</h1>
     <p>Ending scam &amp; spam in crypto once and for all</p>
-    <div>Form</div>
+    <div>Form</div>    
   </section>
-  <section class="land_links">
+  <section class="land_links grid-col-span-5">
     <ul>
       <!-- Inherit columns up to here -->
       <!-- Select each and make them span one col. Select thee last and make it span 2-->
@@ -30,4 +30,7 @@ layout: default
       <!-- The latter styled as a regular button, the formers styled as fitting buttons -->
     </ul>
   </section>
+  <div class="grid-col-span-5">
+      <img src="{{'/assets/images/splash-logo.svg' | relative_url}}" alt="chocolate X Polkadot and Kusama">
+  </div>
 </main>

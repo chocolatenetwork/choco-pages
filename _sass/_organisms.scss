@@ -23,6 +23,10 @@
   max-width: $grid-size;
   width: 100%;
 }
+// utils -- move to organism_utils later on then leave actual organism components here
+@mixin grid-col-span($no) {
+  grid-column: span $no;
+}
 
 body {
   @include grid-h-center;
@@ -34,7 +38,7 @@ body {
 
 footer {
   width: 100%;
-  // limit the content of each part to 1200px. I.e We take the bg, but the width is limited
+  // limit the content of each part to 1200px. I.e We take the bg of each section, but the width of its content is limited
   // We need the bg col
   & > * > * {
     max-width: $grid-size;
@@ -44,22 +48,28 @@ footer {
   @include head;
   @include grid-h-center;
 }
+// ------------------Begin infinite scroll section--------------------
 .container {
   // Use overrides for nav. The header is 100vw with needed background, but the nav tags stick to the grid columns
   @include twelve-column-grid;
   // the container should be at least this big but should also allow for stretching
   min-height: calc(1.06 * (100vh - 150px));
+  // limit everyone inside, no overflows.
+  & > * {
+    max-width: $grid-size;
+  }
 }
 .land {
   // include the image and place it on the right. Although thanks to kadar, we don't have to explictly. Just a note if you switch to svgs
   // wehave to switch to svgs to retain current config on smaller screens by simply making the switch
-  @include splash-logo;
   @include grid-col-span-h;
   @include inherit-grid;
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-size: contain;
-  & > * {
-    grid-column: span 7;
-  }
 }
+// util classes == related to .land
+.grid-col-span-7 {
+  @include grid-col-span(7);
+}
+.grid-col-span-5 {
+  @include grid-col-span(5);
+}
+// -----------------End infinite scroll section ------------------------\\
