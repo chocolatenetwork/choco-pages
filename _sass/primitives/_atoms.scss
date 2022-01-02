@@ -70,6 +70,14 @@ $btn-border: 0.1rem;
     color: white;
   }
 }
+
+@mixin responsive-image($base-w: size, $base-h: size) {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: $base-w;
+  max-width: $base-h;
+}
 // traits
 @mixin smooth-scroll {
   scroll-behavior: smooth;
@@ -91,9 +99,7 @@ $btn-border: 0.1rem;
     scroll-behavior: auto !important;
   }
 }
-@mixin splash-logo {
-  background-image: url(../images/choc-splash.png);
-}
+
 @mixin border($top, $bottom) {
   // outline
   border-width: $top 0px $bottom; // only one: re: moxilla

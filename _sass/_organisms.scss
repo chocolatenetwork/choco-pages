@@ -14,19 +14,38 @@
   background-color: $premium-dark;
 }
 
-@mixin twelve-column-grid {
-  // a 12 column grid with a max width of 1200 heart.
+// a 12 column grid template with a max width of 1200.
+// no explicit cols. Child-cards are free to use the available defaults
+$grid-gap: 1rem;
+@mixin grid-basis {
   display: grid;
-  // grid-template-columns: repeat(3, 1fr) repeat(2, 2fr) 5fr; - Or so I would like. Use even width columns
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 0.5rem;
+  gap: $grid-gap;
   max-width: $grid-size;
   width: 100%;
+  // limit everyone inside, no overflows.
+  & > * {
+    max-width: $grid-size;
+  }
 }
+@mixin splash-area {
+  // defaults, and size limits
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+    'one'
+    'two'
+    'three';
+  @media (min-width: $grid-media-size) {
+    grid-template-areas:
+      //  7 - 5
 
+      'one one one one one one one  three three three three three'
+      'one one one one one one one  three three three three three'
+      'two two two two two bla bla  three three three three three';
+  }
+}
 body {
   @include grid-h-center;
-  grid-template-rows: min-content;
+  align-content: baseline; // Make areas stick to the top
 }
 // .footlinks { // when we have a footer
 //   @include footlinks;
@@ -34,8 +53,8 @@ body {
 
 footer {
   width: 100%;
-  // limit the content of each part to 1200px. I.e We take the bg, but the width is limited
-  // We need the bg col
+  margin: $body-padding 0 0;
+  // We need the bg col, so allow immediate children to be full width but limit their content
   & > * > * {
     max-width: $grid-size;
   }
@@ -44,22 +63,37 @@ footer {
   @include head;
   @include grid-h-center;
 }
+// ------------------Begin infinite scroll section--------------------
+
+// organisms
 .container {
-  // Use overrides for nav. The header is 100vw with needed background, but the nav tags stick to the grid columns
-  @include twelve-column-grid;
-  // the container should be at least this big but should also allow for stretching
-  min-height: calc(1.06 * (100vh - 150px));
+  @include grid-basis;
+  // ---Remove this when we have more content -- the container should be at least this big but should also allow for stretching
+  min-height: calc(1.06 * (70vh - 150px));
 }
+
+//               Card1   ---- landing image and text.
 .land {
-  // include the image and place it on the right. Although thanks to kadar, we don't have to explictly. Just a note if you switch to svgs
-  // wehave to switch to svgs to retain current config on smaller screens by simply making the switch
-  @include splash-logo;
+  padding: $body-padding 0 0;
+  @include apply-body-pad;
+  transition: all 0.2s ease-in-out;
+  height: max-content;
   @include grid-col-span-h;
   @include inherit-grid;
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-size: contain;
-  & > * {
-    grid-column: span 7;
-  }
+  @include splash-area;
 }
+// select first 3 childs for style
+.land_formsection {
+  grid-area: one;
+}
+.land_links {
+  grid-area: two;
+}
+.land_image {
+  grid-area: three;
+  @include responsive-image(320px, 420px);
+  justify-self: center;
+  align-self: end;
+}
+
+// -----------------End infinite scroll section ------------------------\\

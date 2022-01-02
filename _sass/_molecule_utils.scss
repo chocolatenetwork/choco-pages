@@ -1,0 +1,43 @@
+// Utils file for molecules. Currently merged with organisms.
+
+// ------ Layout ------
+@mixin inherit-grid {
+  display: grid;
+  gap: inherit;
+}
+@mixin grid-col-span-h {
+  grid-column: 1 / -1;
+}
+@mixin grid-h-center {
+  display: grid;
+  justify-items: center;
+}
+
+// -- sizing --
+@mixin apply-body-pad($top: true, $lr: true) {
+  // change mquery if rem changes
+  @media (max-width: $grid-size + 20px) {
+    box-sizing: border-box;
+    @if ($top and $lr) {
+      padding: $body-padding $body-padding 0;
+    } @else if ($top) {
+      padding: $body-padding 0 0;
+    } @else if ($lr) {
+      padding: 0 $body-padding;
+    }
+  }
+}
+// ----- Effects ------
+@mixin lighten-on-hover {
+  // update if text is black by default
+  color: darken($nav-link-text, 10%);
+  &:hover {
+    color: $nav-link-text;
+  }
+}
+@mixin darken-on-hover {
+  color: $nav-link-text;
+  &:hover {
+    color: darken($nav-link-text, 10%);
+  }
+}

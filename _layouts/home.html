@@ -12,14 +12,14 @@ layout: default
 <!-- Hence, you would have to convert it to svg and set background?? Nah. You could place them over each other. The background then the transparent image, 
       like acala did. Would be difficult moving around though, but one thing first, first we do horizontal layout -->
 
-<main class="land">
+<div class="land">
   <!-- From the image, There are only two rows here, and each has its content at the bottom -->
   <section class="land_formsection">
-    <h1 class="text--thick">Building a safer Web 3.0 future for all.</h1>
+    <h1><span class="text--thick">Building a safer Web 3.0 future</span> for all.</h1>
     <p>Ending scam &amp; spam in crypto once and for all</p>
-    <div>Form</div>
+    <div>Form</div>    
   </section>
-  <section class="land_links">
+  <div class="land_links">
     <ul>
       <!-- Inherit columns up to here -->
       <!-- Select each and make them span one col. Select thee last and make it span 2-->
@@ -29,5 +29,7 @@ layout: default
       <li><a href="{{litepaper.link}}" target="_blank" rel="noopener noreferrer" class="button">Lite Paper</a></li>
       <!-- The latter styled as a regular button, the formers styled as fitting buttons -->
     </ul>
-  </section>
-</main>
+  </div>
+  
+  <img class="land_image" src="{{'/assets/images/splash-logo.webp' | relative_url}}" alt="chocolate X Polkadot and Kusama">
+</div>
