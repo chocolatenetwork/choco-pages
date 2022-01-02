@@ -70,6 +70,13 @@ $btn-border: 0.1rem;
     color: white;
   }
 }
+
+@mixin responsive-image($base: size) {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  min-width: $base;
+}
 // traits
 @mixin smooth-scroll {
   scroll-behavior: smooth;

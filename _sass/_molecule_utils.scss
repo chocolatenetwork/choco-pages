@@ -14,9 +14,25 @@
   justify-items: center;
 }
 @mixin grid-col-span($no) {
-  grid-column: span $no;
+    // items don't span till specific mq
+  @media (min-width: $grid-media-size) {
+    grid-column: span $no;
+  }
 }
 
+// -- sizing --
+$body-padding: 0.4rem;
+@mixin apply-body-pad($top-bottom: true) {
+  @media (max-width: $grid-size + 20px) {
+    //change mquery if rem changes
+    box-sizing: border-box;
+    @if ($top-bottom) {
+      padding: $body-padding;
+    } @else {
+      padding: 0 $body-padding;
+    }
+  }
+}
 // ----- Effects ------
 @mixin lighten-on-hover {
   // update if text is black by default

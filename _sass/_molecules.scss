@@ -85,6 +85,7 @@
 .nav_main {
   @include nav;
   height: 70px;
+  @include apply-body-pad(false);
 }
 .link {
   @include light-link;
@@ -112,4 +113,7 @@
 .land_formsection {
   display: grid;
   align-content: end;
+  & > p:first-of-type {
+    margin-top: 0;
+  }
 }

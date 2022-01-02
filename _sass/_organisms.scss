@@ -19,14 +19,18 @@ $grid-gap: 1rem;
   // a 12 column grid with a max width of 1200 heart.
   display: grid;
   // grid-template-columns: repeat(3, 1fr) repeat(2, 2fr) 5fr; - Or so I would like. Use even width columns
-  grid-template-columns: repeat(12, 1fr);
   gap: $grid-gap;
   max-width: $grid-size;
   width: 100%;
+  // media queries - don't apply cols till grid size
+  @media (min-width: $grid-media-size) {
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
 
 body {
   @include grid-h-center;
+  align-content: baseline;
 }
 // .footlinks { // when we have a footer
 //   @include footlinks;
@@ -34,8 +38,7 @@ body {
 
 footer {
   width: 100%;
-  // limit the content of each part to 1200px. I.e We take the bg of each section, but the width of its content is limited
-  // We need the bg col
+  // We need the bg col, so allow immediate children to be full width but limit their content
   & > * > * {
     max-width: $grid-size;
   }
@@ -56,26 +59,36 @@ footer {
 
 // organisms
 .container {
+  // padding-block: $body-padding;
+
   @include twelve-column-grid;
   // the container should be at least this big but should also allow for stretching
-  min-height: calc(1.06 * (100vh - 150px));
+  min-height: calc(1.06 * (70vh - 150px));
   // limit everyone inside, no overflows.
   & > * {
     max-width: $grid-size;
   }
 }
+
+//               Card1   ---- landing image and text.
 .land {
-  // This config isn't applied globally from .container yet because other cards may not span full horizontal
-  // But most will want to inerit the grid. Just...less complexity by being more specific up front.
-  // Though, this is the needed config.
+  transition: all 0.2s ease-in-out;
+  // cap width when done styling
   @include grid-col-span-h;
   @include inherit-grid;
+  @include apply-body-pad;
 }
 .land > :last-child {
-  grid-column: 8 / span 5; // Change if grid size changes
-  grid-row-start: 1;
-  grid-row-end: 3;
-  padding: 1rem 0;
+  @include responsive-image(370px);
+  justify-self: center;
+  align-self: end;
+}
+@media (min-width: $grid-media-size) {
+  .land > :last-child {
+    grid-column: 8 / span 5; // Change if grid size changes
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
 }
 
 // -----------------End infinite scroll section ------------------------\\
