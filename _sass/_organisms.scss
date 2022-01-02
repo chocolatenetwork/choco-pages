@@ -14,23 +14,38 @@
   background-color: $premium-dark;
 }
 
+// a 12 column grid template with a max width of 1200.
+// no explicit cols. Child-cards are free to use the available defaults
 $grid-gap: 1rem;
-@mixin twelve-column-grid {
-  // a 12 column grid with a max width of 1200 heart.
+@mixin grid-basis {
   display: grid;
-  // grid-template-columns: repeat(3, 1fr) repeat(2, 2fr) 5fr; - Or so I would like. Use even width columns
   gap: $grid-gap;
   max-width: $grid-size;
   width: 100%;
-  // media queries - don't apply cols till grid size
-  @media (min-width: $grid-media-size) {
-    grid-template-columns: repeat(12, 1fr);
+  // limit everyone inside, no overflows.
+  & > * {
+    max-width: $grid-size;
   }
 }
+@mixin splash-area {
+  // defaults, and size limits
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+    'one'
+    'two'
+    'three';
+  @media (min-width: $grid-media-size) {
+    grid-template-areas:
+      //  7 - 5
 
+      'one one one one one one one  three three three three three'
+      'one one one one one one one  three three three three three'
+      'two two two two two bla bla  three three three three three';
+  }
+}
 body {
   @include grid-h-center;
-  align-content: baseline;
+  align-content: baseline; // Make areas stick to the top
 }
 // .footlinks { // when we have a footer
 //   @include footlinks;
@@ -38,6 +53,7 @@ body {
 
 footer {
   width: 100%;
+  margin: $body-padding 0 0;
   // We need the bg col, so allow immediate children to be full width but limit their content
   & > * > * {
     max-width: $grid-size;
@@ -49,46 +65,35 @@ footer {
 }
 // ------------------Begin infinite scroll section--------------------
 
-// utils
-.grid-col-span-7 {
-  @include grid-col-span(7);
-}
-.grid-col-span-5 {
-  @include grid-col-span(5);
-}
-
 // organisms
 .container {
-  // padding-block: $body-padding;
-
-  @include twelve-column-grid;
-  // the container should be at least this big but should also allow for stretching
+  @include grid-basis;
+  // ---Remove this when we have more content -- the container should be at least this big but should also allow for stretching
   min-height: calc(1.06 * (70vh - 150px));
-  // limit everyone inside, no overflows.
-  & > * {
-    max-width: $grid-size;
-  }
 }
 
 //               Card1   ---- landing image and text.
 .land {
+  padding: $body-padding 0 0;
+  @include apply-body-pad;
   transition: all 0.2s ease-in-out;
-  // cap width when done styling
+  height: max-content;
   @include grid-col-span-h;
   @include inherit-grid;
-  @include apply-body-pad;
+  @include splash-area;
 }
-.land > :last-child {
-  @include responsive-image(370px);
+// select first 3 childs for style
+.land_formsection {
+  grid-area: one;
+}
+.land_links {
+  grid-area: two;
+}
+.land_image {
+  grid-area: three;
+  @include responsive-image(320px, 420px);
   justify-self: center;
   align-self: end;
-}
-@media (min-width: $grid-media-size) {
-  .land > :last-child {
-    grid-column: 8 / span 5; // Change if grid size changes
-    grid-row-start: 1;
-    grid-row-end: 3;
-  }
 }
 
 // -----------------End infinite scroll section ------------------------\\

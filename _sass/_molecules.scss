@@ -31,10 +31,6 @@
 }
 @mixin main-nav-wrapper {
   width: 100%;
-  // constrain nav to grid
-  & > * {
-    max-width: $grid-size;
-  }
   @include grid-h-center;
   // underline -- create a before el to do this
   @include border(1px, 1px);

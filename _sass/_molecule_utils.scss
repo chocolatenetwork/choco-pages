@@ -3,7 +3,6 @@
 // ------ Layout ------
 @mixin inherit-grid {
   display: grid;
-  grid-template-columns: inherit;
   gap: inherit;
 }
 @mixin grid-col-span-h {
@@ -13,22 +12,17 @@
   display: grid;
   justify-items: center;
 }
-@mixin grid-col-span($no) {
-    // items don't span till specific mq
-  @media (min-width: $grid-media-size) {
-    grid-column: span $no;
-  }
-}
 
 // -- sizing --
-$body-padding: 0.4rem;
-@mixin apply-body-pad($top-bottom: true) {
+@mixin apply-body-pad($top: true, $lr: true) {
+  // change mquery if rem changes
   @media (max-width: $grid-size + 20px) {
-    //change mquery if rem changes
     box-sizing: border-box;
-    @if ($top-bottom) {
-      padding: $body-padding;
-    } @else {
+    @if ($top and $lr) {
+      padding: $body-padding $body-padding 0;
+    } @else if ($top) {
+      padding: $body-padding 0 0;
+    } @else if ($lr) {
       padding: 0 $body-padding;
     }
   }

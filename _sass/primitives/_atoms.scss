@@ -71,11 +71,12 @@ $btn-border: 0.1rem;
   }
 }
 
-@mixin responsive-image($base: size) {
+@mixin responsive-image($base-w: size, $base-h: size) {
   display: block;
+  width: 100%;
   height: auto;
-  max-width: 100%;
-  min-width: $base;
+  min-width: $base-w;
+  max-width: $base-h;
 }
 // traits
 @mixin smooth-scroll {
