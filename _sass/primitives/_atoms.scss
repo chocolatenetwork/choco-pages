@@ -1,0 +1,133 @@
+@import 'misc-variables', 'colors', 'typography';
+// atoms
+// mixins go here. Use colors, typography to create bases
+// include default styles for elemental text straight from md
+// start from here and see how you feel. When it grows in complexity, it becomes a molecule.
+
+/*topography atoms*/
+@mixin huge-title {
+  font-size: $hugeTitle;
+}
+// for the big tag
+@mixin heading_strong {
+  font-weight: $thick;
+}
+
+@mixin light-text {
+  font-weight: $light;
+}
+@mixin thick-text {
+  font-weight: $thick;
+}
+@mixin transparent-highlight {
+  background-color: $highlight-color;
+}
+/*Element atoms*/
+@mixin link {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: $headingBold;
+  @content;
+  &:active {
+    // Todo: Color visibility
+    color: $wrap-red;
+  }
+}
+@mixin nav_link {
+  &.current {
+    color: $wrap-red;
+  }
+}
+//--- mixin vars
+$transition-duration: 0.3s;
+$transition-style: ease;
+@mixin button {
+  @include link;
+  font-weight: $thick;
+  background-color: $text-color;
+  color: $primary;
+  padding: 0.4rem 0.65rem;
+  display: inline-block;
+  border: $btn-border solid $text-color;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color, border, $transition-duration $transition-style;
+  &:hover {
+    background-color: $wrap-red;
+    border: $btn-border solid transparent;
+    color: white;
+  }
+}
+
+// vars---&mixin
+$btn-border: 0.1rem;
+@mixin button--transparent {
+  background-color: transparent;
+  color: $text-color;
+  &:hover {
+    color: white;
+  }
+}
+
+@mixin responsive-image($base-w: size, $base-h: size) {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: $base-w;
+  max-width: $base-h;
+}
+// traits
+@mixin smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+@mixin body-default-misc {
+  min-height: 100vh;
+}
+@mixin motion-accessibility {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@mixin border($top, $bottom) {
+  // outline
+  border-width: $top 0px $bottom; // only one: re: moxilla
+  border-style: solid;
+  border-color: darken($nav-link-text, 30%);
+}
+::selection {
+  @include transparent-highlight;
+}
+.text--light {
+  @include light-text;
+}
+.text--thick {
+  @include thick-text;
+}
+// misc traits describing behaviour of organisms (cannot standalone, hence atomic).
+html:focus-within {
+  @include smooth-scroll;
+}
+body {
+  @include body-default-misc;
+}
+@media (prefers-reduced-motion: reduce) {
+  @include motion-accessibility;
+}
+.button {
+  @include button;
+}
+.button--transparent {
+  @include button--transparent;
+}

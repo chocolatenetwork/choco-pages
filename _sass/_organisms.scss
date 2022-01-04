@@ -1,0 +1,99 @@
+// think of larger layouts , include overarching grids and the like here.
+@import 'molecules';
+
+@mixin head {
+  width: 100%;
+  height: 100px;
+  text-transform: uppercase;
+  background-color: $primary;
+}
+
+@mixin footlinks {
+  width: 100vw;
+  height: 100px;
+  background-color: $premium-dark;
+}
+
+// a 12 column grid template with a max width of 1200.
+// no explicit cols. Child-cards are free to use the available defaults
+$grid-gap: 1rem;
+@mixin grid-basis {
+  display: grid;
+  gap: $grid-gap;
+  max-width: $grid-size;
+  width: 100%;
+  // limit everyone inside, no overflows.
+  & > * {
+    max-width: $grid-size;
+  }
+}
+@mixin splash-area {
+  // defaults, and size limits
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+    'one'
+    'two'
+    'three';
+  @media (min-width: $grid-media-size) {
+    grid-template-areas:
+      //  7 - 5
+
+      'one one one one one one one  three three three three three'
+      'one one one one one one one  three three three three three'
+      'two two two two two bla bla  three three three three three';
+  }
+}
+body {
+  @include grid-h-center;
+  align-content: baseline; // Make areas stick to the top
+}
+// .footlinks { // when we have a footer
+//   @include footlinks;
+// }
+
+footer {
+  width: 100%;
+  margin: $body-padding 0 0;
+  // We need the bg col, so allow immediate children to be full width but limit their content
+  & > * > * {
+    max-width: $grid-size;
+  }
+}
+.head {
+  @include head;
+  @include grid-h-center;
+}
+// ------------------Begin infinite scroll section--------------------
+
+// organisms
+.container {
+  @include grid-basis;
+  // ---Remove this when we have more content -- the container should be at least this big but should also allow for stretching
+  min-height: calc(1.06 * (70vh - 150px));
+}
+
+//               Card1   ---- landing image and text.
+.land {
+  padding: $body-padding 0 0;
+  @include apply-body-pad;
+  transition: all 0.2s ease-in-out;
+  height: max-content;
+  @include grid-col-span-h;
+  @include inherit-grid;
+  @include splash-area;
+}
+// select first 3 childs for style
+.land_formsection {
+  grid-area: one;
+}
+.land_links {
+  grid-area: two;
+}
+.land_image {
+  grid-area: three;
+  @include responsive-image(320px, 420px);
+  justify-self: center;
+  align-self: end;
+}
+
+// -----------------End infinite scroll section ------------------------\\
