@@ -45,7 +45,7 @@ $grid-gap: 1rem;
 }
 body {
   @include grid-h-center;
-  align-content: baseline; // Make areas stick to the top
+  align-content: space-between;
 }
 // .footlinks { // when we have a footer
 //   @include footlinks;
