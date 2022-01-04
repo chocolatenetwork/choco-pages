@@ -1,5 +1,4 @@
 ---
-title: 'Welcome to Chocolate!'
 layout: home
 ---
 

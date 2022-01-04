@@ -1,1 +1,10 @@
-name: Chocolate network
+# Implied array of frontmatter values. Each element is a scope denoted by "-" https://jekyllrb.com/docs/configuration/front-matter-defaults
+# Frontmatter defaults
+defaults:
+  - scope:
+      path: ''
+    values:
+      title: Chocolate network
+
+# Remove *.html
+permalink: pretty
