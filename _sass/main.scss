@@ -1,0 +1,9 @@
+// frameworks
+@import "./fontawesome/scss/fontawesome.scss";
+@import "./fontawesome/scss/solid.scss";
+@import "./fontawesome/scss/brands.scss";
+$fa-font-path:        "../webfonts";
+
+// layer in molecules and their styles for use
+@import 'organisms';
+
