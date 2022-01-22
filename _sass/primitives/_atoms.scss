@@ -43,6 +43,7 @@ $transition-duration: 0.3s;
 $transition-style: ease;
 @mixin button {
   @include link;
+  font-size: $tiny-text;
   font-weight: $thick;
   background-color: $text-color;
   color: $primary;
