@@ -91,6 +91,8 @@
   @include hr-list-of-links;
   align-items: start;
   height: 100%;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
 
   & > li:not(:first-child) {
     margin-left: 0.5rem;
