@@ -29,12 +29,7 @@
   display: flex;
   align-items: center;
 }
-@mixin main-nav-wrapper {
-  width: 100%;
-  @include grid-h-center;
-  // underline -- create a before el to do this
-  @include border(1px, 1px);
-}
+
 @mixin nav {
   width: 100%;
   max-width: $grid-size;
@@ -75,9 +70,7 @@
   padding: 10px;
   height: 30px;
 }
-.nav-wrap--main {
-  @include main-nav-wrapper;
-}
+
 .nav_main {
   @include nav;
   height: 70px;
