@@ -6,16 +6,7 @@
 @import 'primitives';
 @import 'molecule_utils';
 
-@mixin light-link {
-  @include link {
-    @include lighten-on-hover;
-  }
-}
-@mixin dark-link {
-  @include link {
-    @include darken-on-hover;
-  }
-}
+
 
 @mixin nav-li {
   margin-left: 1rem;
@@ -74,12 +65,7 @@
   height: 70px;
   @include apply-body-pad(false);
 }
-.link {
-  @include light-link;
-}
-.link--dark {
-  @include dark-link;
-}
+
 .nav .link {
   @include nav_link;
 }
