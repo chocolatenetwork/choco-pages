@@ -22,27 +22,48 @@
 @mixin transparent-highlight {
   background-color: $highlight-color;
 }
+// ----- Effects ------
+@mixin lighten-on-hover {
+  // update if text is black by default
+  color: darken($nav-link-text, 10%);
+  &:hover {
+    color: $nav-link-text;
+  }
+}
+@mixin darken-on-hover {
+  color: $nav-link-text;
+  &:hover {
+    color: darken($nav-link-text, 10%);
+  }
+}
 /*Element atoms*/
 @mixin link {
   text-decoration: none;
   transition: color 0.3s ease;
   font-weight: $headingBold;
-  @content;
-  &:active {
-    // Todo: Color visibility
-    color: $wrap-red;
-  }
+  color: $text-color;
+}
+@mixin underline {
+  // Get a cool underline effect for nav link current that also fits for a regular link text underline
+  // Then create a variant of link that is no-underline
 }
 @mixin nav_link {
   &.current {
     color: $wrap-red;
   }
 }
+@mixin hop {
+  bottom: 1px;
+  position: relative;
+  left: 0.5px;
+}
 //--- mixin vars
+$btn-border: 0.1rem;
 $transition-duration: 0.3s;
 $transition-style: ease;
 @mixin button {
-  @include link;
+  // No, most styles here aren't for button, include in html instead.
+  font-size: $tiny-text;
   font-weight: $thick;
   background-color: $text-color;
   color: $primary;
@@ -53,21 +74,21 @@ $transition-style: ease;
   box-sizing: border-box;
   cursor: pointer;
   text-transform: uppercase;
-  transition: background-color, border, $transition-duration $transition-style;
+  transition: background-color, border, bottom, left, $transition-duration $transition-style;
   &:hover {
-    background-color: $wrap-red;
-    border: $btn-border solid transparent;
-    color: white;
+    border-color: transparent;
+    // Do a little hop
+    @include hop;
   }
 }
 
-// vars---&mixin
-$btn-border: 0.1rem;
+
 @mixin button--transparent {
   background-color: transparent;
   color: $text-color;
   &:hover {
-    color: white;
+    color: $primary;
+    background-color: $text-color;
   }
 }
 
@@ -100,11 +121,28 @@ $btn-border: 0.1rem;
   }
 }
 
-@mixin border($top, $bottom) {
+@mixin border($top: 1px, $bottom: 1px, $style: solid) {
   // outline
   border-width: $top 0px $bottom; // only one: re: moxilla
-  border-style: solid;
-  border-color: darken($nav-link-text, 30%);
+  border-style: $style;
+  border-color: $greyish;
+}
+// Currently used only for the nav's usecase.
+@mixin hor-rule($thickness) {
+  // Remove extra space
+  margin: 0;
+  padding: 0;
+  // Removing sizing issue and fix height in place of border
+  width: 100%;
+  box-sizing: border-box;
+  height: $thickness;
+  border: 0px;
+  // Same color as prev iter.
+  background-color: $greyish;
+}
+
+.nav_hr {
+  @include hor-rule(1px);
 }
 ::selection {
   @include transparent-highlight;
@@ -114,6 +152,18 @@ $btn-border: 0.1rem;
 }
 .text--thick {
   @include thick-text;
+}
+// Clickables
+.link {
+  @include link;
+}
+.link--light {
+  // Modifier, hence it stands alone
+  @include darken-on-hover;
+}
+.link--dark {
+  // Modifier, hence it stands alone
+  @include lighten-on-hover;
 }
 // misc traits describing behaviour of organisms (cannot standalone, hence atomic).
 html:focus-within {

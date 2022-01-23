@@ -6,16 +6,7 @@
 @import 'primitives';
 @import 'molecule_utils';
 
-@mixin light-link {
-  @include link {
-    @include lighten-on-hover;
-  }
-}
-@mixin dark-link {
-  @include link {
-    @include darken-on-hover;
-  }
-}
+
 
 @mixin nav-li {
   margin-left: 1rem;
@@ -29,12 +20,7 @@
   display: flex;
   align-items: center;
 }
-@mixin main-nav-wrapper {
-  width: 100%;
-  @include grid-h-center;
-  // underline -- create a before el to do this
-  @include border(1px, 1px);
-}
+
 @mixin nav {
   width: 100%;
   max-width: $grid-size;
@@ -58,8 +44,6 @@
   // always-max
   width: 100%;
   height: 50px; // change if footer grows
-  background-color: $wrap-red;
-
   text-transform: uppercase;
   // outline
   @include border(1px, 0px); // only one: re: moxilla
@@ -75,20 +59,13 @@
   padding: 10px;
   height: 30px;
 }
-.nav-wrap--main {
-  @include main-nav-wrapper;
-}
+
 .nav_main {
   @include nav;
   height: 70px;
   @include apply-body-pad(false);
 }
-.link {
-  @include light-link;
-}
-.link--dark {
-  @include dark-link;
-}
+
 .nav .link {
   @include nav_link;
 }
@@ -100,6 +77,8 @@
   @include hr-list-of-links;
   align-items: start;
   height: 100%;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
 
   & > li:not(:first-child) {
     margin-left: 0.5rem;

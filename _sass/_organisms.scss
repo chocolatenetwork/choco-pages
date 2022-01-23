@@ -91,7 +91,7 @@ footer {
 }
 .land_image {
   grid-area: three;
-  @include responsive-image(320px, 420px);
+  @include responsive-image(200px, 420px);
   justify-self: center;
   align-self: end;
 }

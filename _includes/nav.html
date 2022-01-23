@@ -12,31 +12,31 @@
 <nav class="nav nav_social" aria-label="social links">
   <ul>
     <li>
-      <a href="{{discord.link}}" class="link " target="_blank"><i class="fab light fa-discord fa-fw"></i></a>
+      <a href="{{discord.link}}" class="link link--dark " target="_blank"><i class="fab light fa-discord fa-fw"></i></a>
     </li>
     <li>
-      <a href="https://www.linkedin.com/company/{{linkedin.company}}" class="link " target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      <a href="https://www.linkedin.com/company/{{linkedin.company}}" class="link link--dark " target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
     </li>
     <li>
-      <a href="https://twitter.com/{{twitter.user}}" class="link " target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      <a href="https://twitter.com/{{twitter.user}}" class="link link--dark " target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
     </li>
     <li>
-      <a href="{{medium.user}}" class="link " target="_blank"><i class="fab fa-medium fa-fw"></i></a>
+      <a href="{{medium.user}}" class="link link--dark " target="_blank"><i class="fab fa-medium fa-fw"></i></a>
     </li>
   </ul>
 </nav>
-<div class="nav-wrap--main">
+<hr class="nav_hr">
 <nav class="nav nav_main" aria-label="Site menu">
   <a class="logo link" href={{'/#home' | relative_url}}
     ><i class="chocolate"></i><span class="text--light">chocolate <b>network</b></span></a
   >
   <ul>
-    <li><a href={{'/#home' | relative_url}} class="link link--dark">home</a></li>
-    <li><a href={{'/#about' | relative_url}} class="link link--dark">about</a></li>
-    <li><a href={{'/#footer' | relative_url}} class="link link--dark">contact</a></li>
+    <li><a href={{'/#home' | relative_url}} class="link link--light">home</a></li>
+    <li><a href={{'/#about' | relative_url}} class="link link--light">about</a></li>
+    <li><a href={{'/#footer' | relative_url}} class="link link--light">contact</a></li>
   </ul>
 </nav>
-</div>
+<hr class="nav_hr">
 <script>
   // make link active if url matches
   const links = document.querySelectorAll('.nav_main ul li a');
