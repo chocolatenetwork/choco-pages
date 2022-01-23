@@ -1,0 +1,19 @@
+{
+  "short_name": "ChocNetwork",
+
+  "name": "Chocolate Network",
+
+  "icons": [
+    {
+      "src": "favicon.ico",
+
+      "sizes": "64x64 48x48 32x32 16x16",
+
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#4b103d"
+}
