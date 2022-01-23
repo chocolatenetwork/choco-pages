@@ -27,17 +27,4 @@
     }
   }
 }
-// ----- Effects ------
-@mixin lighten-on-hover {
-  // update if text is black by default
-  color: darken($nav-link-text, 10%);
-  &:hover {
-    color: $nav-link-text;
-  }
-}
-@mixin darken-on-hover {
-  color: $nav-link-text;
-  &:hover {
-    color: darken($nav-link-text, 10%);
-  }
-}
+

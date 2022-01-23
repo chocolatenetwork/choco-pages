@@ -7,17 +7,18 @@ html {
 
 // sizes
 //  regular text -p, ...and the like
-$regularText: 1rem;
-$smaller-text: 0.8rem; // readable labels, the like.
-$tiny-text: 0.64rem;
+$paragraphText: 1rem;
+$smaller-text: 0.8rem; // This feels right for nav. <Following fireship.>
+$tiny-text: 0.64rem; // This is the go-to for button text, labels and the like.
 //  headings
-$hugeTitle: 4.768rem;
-$title: 3.052rem; // first on typescale -> semantic h1
-$headingOne: 2.441rem;
-$headingTwo: 1.953rem;
-$headingThree: 1.563rem;
+$hugeTitle: 3.052rem; // first on typescale -> semantic h1. Too big, in the 70s
+$title: 2.441rem; // Good? Pretty much. In the 40s
+$headingOne: 1.953rem; // 30s
+$headingTwo: 1.563rem; // 30s
+$headingThree: 1.25rem; //  20s. 25. Round.
+
 //  4 and five are just color variants and indentation
-$headingFour: $regularText;
+$headingFour: $paragraphText;
 $headingFive: $smaller-text;
 
 // weights
