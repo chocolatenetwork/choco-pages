@@ -13,7 +13,11 @@
   height: 100px;
   background-color: $premium-dark;
 }
-
+// Body layout
+@mixin body-grid($header-width: 100px, $footer-width: 100px){
+  display: grid;
+  grid-template-rows: fit-content($header-width) auto fit-content($footer-width);
+}
 // a 12 column grid template with a max width of 1200.
 // no explicit cols. Child-cards are free to use the available defaults
 $grid-gap: 1rem;
@@ -44,8 +48,9 @@ $grid-gap: 1rem;
   }
 }
 body {
-  @include grid-h-center;
-  align-content: space-between;
+  @include body-grid(100px, 300px);
+  justify-items: center;
+  gap: $grid-gap;
 }
 // .footlinks { // when we have a footer
 //   @include footlinks;
@@ -75,7 +80,7 @@ footer {
 //               Card1   ---- landing image and text.
 .land {
   padding: $body-padding 0 0;
-  @include apply-body-pad;
+  @include apply-body-pad(false);
   transition: all 0.2s ease-in-out;
   height: max-content;
   @include grid-col-span-h;
@@ -95,5 +100,6 @@ footer {
   justify-self: center;
   align-self: end;
 }
-
+//            Card2  ----  About section 
+//            Card3  ----  Team section
 // -----------------End infinite scroll section ------------------------\\
