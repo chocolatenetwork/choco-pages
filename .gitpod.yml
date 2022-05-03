@@ -14,3 +14,4 @@ vscode:
     - VisualStudioExptTeam.vscodeintellicode
     - christian-kohler.path-intellisense
     # - matklad.rust-analyzer
+    - pucelle.vscode-css-navigation
