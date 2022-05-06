@@ -14,16 +14,16 @@
 }
 
 // -- sizing -- Slight padding so everything isn't mashed together
-@mixin apply-body-pad($top: true, $lr: true) {
+@mixin rem-body-pad($top: true, $lr: true) {
   // change mquery if rem changes
-  @media (max-width: ($grid-size + 20px)) {
-    box-sizing: border-box;
-    @if ($top and $lr) {
-      padding: $body-padding $body-padding 0;
-    } @else if ($top) {
-      padding: $body-padding 0 0;
-    } @else if ($lr) {
-      padding: 0 $body-padding;
+  @media (min-width: ($grid-size + 20px)) {
+    @if ($top) { 
+      // Mutually exclusive
+      padding-top: 0;
+    }  
+    @if ($lr) {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }

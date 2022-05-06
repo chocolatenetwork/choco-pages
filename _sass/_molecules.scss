@@ -52,18 +52,20 @@
   justify-content: center;
   font-size: $tiny-text;
 }
-
-.nav_social {
+.nav{
   @include nav;
   box-sizing: border-box;
-  padding: 10px;
-  height: 30px;
+}
+.nav_social {
+  height: 36px;
+  padding: $body-padding / 2 $body-padding;
+  @include rem-body-pad(false); 
 }
 
 .nav_main {
-  @include nav;
-  height: 70px;
-  @include apply-body-pad(false);
+  height: 75px;
+  padding: 0 $body-padding;
+  @include rem-body-pad(false);
 }
 
 .nav .link {
