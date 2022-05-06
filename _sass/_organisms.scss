@@ -8,22 +8,15 @@
   background-color: $primary;
 }
 
-@mixin footlinks {
-  width: 100vw;
-  height: 100px;
-  background-color: $premium-dark;
-}
 // Body layout
 @mixin body-grid($header-width: 100px, $footer-width: 100px){
   display: grid;
   grid-template-rows: fit-content($header-width) auto fit-content($footer-width);
 }
-// a 12 column grid template with a max width of 1200.
-// no explicit cols. Child-cards are free to use the available defaults
-$grid-gap: 1rem;
+// Grid template for main container with a max width of 1200.
 @mixin grid-basis {
   display: grid;
-  gap: $grid-gap;
+  gap: $body-padding * 3;
   max-width: $grid-size;
   width: 100%;
   // limit everyone inside, no overflows.
@@ -47,22 +40,16 @@ $grid-gap: 1rem;
       'two two two two two bla bla  three three three three three';
   }
 }
+@mixin last-splash{
+  padding-bottom: $body-padding * 2;
+}
 body {
   @include body-grid(114px, 300px);
   justify-items: center;
-  gap: $grid-gap;
 }
-// .footlinks { // when we have a footer
-//   @include footlinks;
-// }
 
 footer {
   width: 100%;
-  margin: $body-padding 0 0;
-  // We need the bg col, so allow immediate children to be full width but limit their content
-  & > * > * {
-    max-width: $grid-size;
-  }
 }
 .head {
   @include head;
@@ -72,15 +59,21 @@ footer {
 
 // organisms
 .container {
+  box-sizing: border-box;
+  padding: $body-padding;
+  @include rem-body-pad(false);
+
   @include grid-basis;
   // ---Remove this when we have more content -- the container should be at least this big but should also allow for stretching
   min-height: calc(100vh - 152px);
 }
-
+.container_last{
+  @include last-splash;
+}
 //               Card1   ---- landing image and text.
 .land {
-  padding: $body-padding $body-padding 0;
   box-sizing: border-box;
+  padding-top: $body-padding * 2;
   @include rem-body-pad(false);
   transition: all 0.2s ease-in-out;
   height: max-content;

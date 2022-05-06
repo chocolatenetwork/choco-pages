@@ -83,14 +83,7 @@ $transition-style: ease;
 }
 
 
-@mixin button--transparent {
-  background-color: transparent;
-  color: $text-color;
-  &:hover {
-    color: $primary;
-    background-color: $text-color;
-  }
-}
+
 
 @mixin responsive-image($base-w: size, $base-h: size) {
   display: block;
@@ -177,7 +170,4 @@ body {
 }
 .button {
   @include button;
-}
-.button--transparent {
-  @include button--transparent;
 }

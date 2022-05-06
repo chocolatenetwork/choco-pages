@@ -6,6 +6,7 @@ layout: default
 {%assign twitter = site.data.siteconfig[2] %}
 {%assign medium = site.data.siteconfig[3] %}
 {%assign litepaper = site.data.siteconfig[4] %}
+{%assign webapp = site.data.siteconfig[5] %}
   <div class="land">
   <section class="land_formsection">
     <h1><span class="text--thick">Building a safer Web 3.0 future</span> for all.</h1>
@@ -13,93 +14,15 @@ layout: default
   </section>
   <div class="land_links">
     <ul>
-      <li><a href="{{discord.link}}" target="_blank" rel="noopener noreferrer" class="link button button--transparent"><i class="fab fa-discord fa-fw fa-big"></i></a></li>
-      <li><a href="https://twitter.com/{{twitter.user}}" target="_blank" rel="noopener noreferrer" class="link button button--transparent"><i class="fab fa-twitter fa-fw fa-big"></i></a></li>
-      <!-- <li><a href="{{medium.user}}" target="_blank" rel="noopener noreferrer" class="link button button--transparent"><i class="fab fa-medium fa-fw fa-big"></i></a></li> -->
+      <li><a href="{{webapp.link}}" target="_blank" rel="noopener noreferrer" class="link button">TRY THE DEMO</a></li>
       <li><a href="{{litepaper.link}}" target="_blank" rel="noopener noreferrer" class="link button">Lite Paper</a></li>
     </ul>
   </div>
   <img class="land_image" src="{{'/assets/images/splash-logo.webp' | relative_url}}"
-    alt="chocolate X Polkadot and Kusama">
-  </div>
-  <!-- Include blurb and short? desc-->
-  <!-- <div class="about">
-              <h2 id="about">About</h2>
-              <blockquote>
-                &ldquo;To provide a safe path to onboard the next 1 billion users of crypto &amp; blockchain by
-                eliminating Web 3.0 scams.&rdquo;
-              </blockquote>
-            </div> -->
-  <!-- Include choc token section -->
-  <div class="token">
-    <h2 id="token">The Chocolate Token (CHOC)</h2>
+    alt="Chocolate X Polkadot and Kusama">
   </div>
   
-  <!-- Include team SECTION-->
-  <div class="team">
-    <h2 id="team">Team</h2>
-    <!-- https://jekyllrb.com/docs/datafiles/ -->
-    <section class="team_cards">
-      <!-- 
-                            1. Store member props as a json blob on this repo and load into app. If too slow, load another way.
-                            2. Figure out how to style the cards nicely and use one method
-                            3. Map each of them into responsive cards and display under this section. This would be a grid ideally well-placed and responsive
-                            interface MemberProps {
-                              name: string;
-                              image: string;
-                              socials: any;
-                            }
-                            /**
-                             *
-                             * @description Renders a memberview
-                             */
-                            const Member: React.FC<MemberProps> = function (props) {
-                              const { image, name } = props;
-                              return (
-                                <article>
-                                  <figure>
-                                    <img src={image} alt='' />
-                                    <figcaption>{name}</figcaption>
-                                  </figure>
-                                  {/* title here */}
-                                  <span>{/* Render Socials */}</span>
-                                </article>
-                              );
-                            };
-                            
-                            const TeamList: React.FC = function () {
-                              const [team] = useState<any[]>([]);
-                              // fetch team from git - do this lazily on app instantiation.
-                              // teamlist.mapeach to img,name,title
-                              //  fill in members from fetch team
-                              const renderTeam = team.map((member) => <Member {...member} />);
-                              return <section>{renderTeam}</section>;
-                            };
-                            
-                            /**
-                             * @description  The team page
-                             *
-                             */
-                            const Team: React.FC = function () {
-                              return (
-                                <article>
-                                  <h1>Meet our Team</h1>
-                                  <TeamList />
-                                  <p>
-                                    <b className='highlight-team'>I</b>ntegrity <b className='highlight-team'>D</b>iscipline{' '}
-                                    <b className='highlight-team'>E</b>fficiency <b className='highlight-team'>A</b>daptability
-                                  </p>
-                                  <p>
-                                    Team <img src={ChocolateRedSmall} alt='chocolate-emoji' /> is a meritocracy. No space for
-                                    big egos here, only big dreams.
-                                  </p>
-                                </article>
-                              );
-                            };
-                            
-                            export default Team;
-                            
-                             -->
-  
-    </section>
-    </div>
+  <div class="container_last">
+    <iframe src="https://embeds.beehiiv.com/fa097289-2153-4053-98fe-67403641861d" data-test-id="beehiiv-embed"
+      width="100%" height="400" frameborder="0" scrolling="no" style="margin: 0; background-color: transparent"></iframe>
+  </div>
