@@ -1,10 +1,9 @@
 image:
-  file: .gitpod.Dockerfile
+  file: .github/dockerfiles/.gitpod.Dockerfile
+  context: .github
 tasks:
-  - init: |
-      jekyll build
-    command: |
-      jekyll serve
+  - init: jekyll build
+    command: jekyll serve
 vscode:
   extensions:
     - sissel.shopify-liquid
@@ -13,5 +12,4 @@ vscode:
     - mrmlnc.vscode-scss
     - VisualStudioExptTeam.vscodeintellicode
     - christian-kohler.path-intellisense
-    # - matklad.rust-analyzer
     - pucelle.vscode-css-navigation
