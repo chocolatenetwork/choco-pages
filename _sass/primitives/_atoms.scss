@@ -8,16 +8,9 @@
 @mixin huge-title {
   font-size: $hugeTitle;
 }
-// for the big tag
-@mixin heading_strong {
-  font-weight: $thick;
-}
 
-@mixin light-text {
-  font-weight: $light;
-}
-@mixin thick-text {
-  font-weight: $thick;
+@mixin bold-text{
+  font-weight: bold; // Pretty much okay.
 }
 @mixin transparent-highlight {
   background-color: $highlight-color;
@@ -140,11 +133,8 @@ $transition-style: ease;
 ::selection {
   @include transparent-highlight;
 }
-.text--light {
-  @include light-text;
-}
-.text--thick {
-  @include thick-text;
+.text--bold {
+  @include bold-text;
 }
 // Clickables
 .link {

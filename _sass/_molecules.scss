@@ -19,6 +19,7 @@
   list-style-type: none;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 @mixin nav {
@@ -40,15 +41,40 @@
     }
   }
 }
+@mixin foot-cp-nav{
+  width: fit-content;
+  padding: ($body-padding / 2) 0;
+}
+@mixin foot-cp-p{
+  & > .foot_copyright-text > p{
+      margin-bottom:0; // center.
+  }
+  @media(min-width: 430px){
+    & > *{
+      flex-grow: 1;
+    }
+  }
+}
 @mixin foot-cp {
-  // always-max
   width: 100%;
-  height: 50px; // change if footer grows
   text-transform: uppercase;
-  // little centered text footer fn
+  // Auto layout
   display: flex;
   justify-content: center;
+  row-gap: $body-padding / 2;
   font-size: $tiny-text;
+  flex-wrap: wrap;
+  @include foot-cp-p;
+  & > .nav{
+    @include foot-cp-nav;
+  }
+}
+@mixin footer-content-pad{
+  // Solid.
+  padding: 3 * $body-padding $body-padding $body-padding;
+  // Writing mode compatibility
+  padding-block: 3 * $body-padding $body-padding;
+  padding-inline: $body-padding; // l-r.
 }
 .nav{
   @include nav;
@@ -77,9 +103,13 @@
   &>*{  
     max-width: $grid-size;
   }
-  padding-top: 3 * $body-padding;
+  box-sizing: border-box;
+  @include footer-content-pad;
+  @include rem-body-pad(false);
   display: flex;
-  justify-content: center ;
+  flex-direction: column;
+  align-items: center;
+  row-gap: $body-padding;
 }
 .land_links > ul {
   @include hr-list-of-links;

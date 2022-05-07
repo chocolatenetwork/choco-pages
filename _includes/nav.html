@@ -1,7 +1,8 @@
 {%assign discord = site.data.siteconfig[0] %}
 {%assign linkedin = site.data.siteconfig[1] %}
 {%assign twitter = site.data.siteconfig[2] %}
-{%assign medium = site.data.siteconfig[3] %}
+{%assign github = site.data.siteconfig[3] %}
+
 <nav class="nav nav_social" aria-label="social links">
   <ul>
     <li>
@@ -14,7 +15,7 @@
       <a href="https://twitter.com/{{twitter.user}}" class="link link--dark " target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
     </li>
     <li>
-      <a href="{{medium.user}}" class="link link--dark " target="_blank"><i class="fab fa-medium fa-fw"></i></a>
+      <a href="https://github.com/{{github.user}}" class="link link--dark " target="_blank"><i class="fab fa-github fa-fw"></i></a>
     </li>
   </ul>
 </nav>
