@@ -8,16 +8,9 @@
 @mixin huge-title {
   font-size: $hugeTitle;
 }
-// for the big tag
-@mixin heading_strong {
-  font-weight: $thick;
-}
 
-@mixin light-text {
-  font-weight: $light;
-}
-@mixin thick-text {
-  font-weight: $thick;
+@mixin bold-text{
+  font-weight: bold; // Pretty much okay.
 }
 @mixin transparent-highlight {
   background-color: $highlight-color;
@@ -83,14 +76,7 @@ $transition-style: ease;
 }
 
 
-@mixin button--transparent {
-  background-color: transparent;
-  color: $text-color;
-  &:hover {
-    color: $primary;
-    background-color: $text-color;
-  }
-}
+
 
 @mixin responsive-image($base-w: size, $base-h: size) {
   display: block;
@@ -147,11 +133,8 @@ $transition-style: ease;
 ::selection {
   @include transparent-highlight;
 }
-.text--light {
-  @include light-text;
-}
-.text--thick {
-  @include thick-text;
+.text--bold {
+  @include bold-text;
 }
 // Clickables
 .link {
@@ -177,7 +160,4 @@ body {
 }
 .button {
   @include button;
-}
-.button--transparent {
-  @include button--transparent;
 }
