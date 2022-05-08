@@ -1,10 +1,6 @@
 // Utils file for molecules. Currently merged with organisms.
 
 // ------ Layout ------
-@mixin inherit-grid {
-  display: grid;
-  gap: inherit;
-}
 @mixin grid-col-span-h {
   grid-column: 1 / -1;
 }
@@ -13,18 +9,34 @@
   justify-items: center;
 }
 
-// -- sizing --
-@mixin apply-body-pad($top: true, $lr: true) {
+// -- sizing -- Slight padding so everything isn't mashed together
+@mixin rem-body-pad($top: true, $lr: true) {
   // change mquery if rem changes
-  @media (max-width: $grid-size + 20px) {
-    box-sizing: border-box;
-    @if ($top and $lr) {
-      padding: $body-padding $body-padding 0;
-    } @else if ($top) {
-      padding: $body-padding 0 0;
-    } @else if ($lr) {
-      padding: 0 $body-padding;
+  @media (min-width: ($grid-size + 20px)) {
+    @if ($top) { 
+      // Mutually exclusive
+      padding-top: 0;
+    }  
+    @if ($lr) {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }
-
+// -- sizing -- margin
+@mixin rem-body-margin($bottom: true, $top: true, $lr: true) {
+  // change mquery if rem changes
+  @media (min-width: ($grid-size + 20px)) {
+    @if ($top) { 
+      // Mutually exclusive
+      margin-top: 0;
+    }
+    @if ($bottom){
+      margin-bottom: 0;
+    } 
+    @if ($lr) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
