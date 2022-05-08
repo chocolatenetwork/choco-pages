@@ -39,6 +39,13 @@
       'one one one one one one one  three three three three three'
       'two two two two two bla bla  three three three three three';
   }
+  & h1{
+    margin-top: 0; // Handled by padding.
+    margin-bottom: 0.64rem; // for p.
+  }
+  & p {
+    margin-bottom: 0.5 * $body-padding; // To complete spacing with links.
+  }
 }
 @mixin last-splash{
   padding-bottom: $body-padding * 2;
@@ -77,8 +84,10 @@ footer {
   @include rem-body-pad(false);
   transition: all 0.2s ease-in-out;
   height: max-content;
+  display: grid;
   @include grid-col-span-h;
-  @include inherit-grid;
+  row-gap: $body-padding; //  Min spacing.
+  column-gap: inherit;
   @include splash-area;
 }
 // select first 3 childs for style
@@ -87,6 +96,9 @@ footer {
 }
 .land_links {
   grid-area: two;
+  // Fill in rest of gap w/ image
+  margin-bottom: 2 * $body-padding;
+  @include rem-body-margin(true, false, false);
 }
 .land_image {
   grid-area: three;
