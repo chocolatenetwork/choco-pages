@@ -1,6 +1,32 @@
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; {{ site.footer }} 20{{ site.time | date: '%y' }}</p>
+{%assign discord = site.data.siteconfig[0] %}
+{%assign linkedin = site.data.siteconfig[1] %}
+{%assign twitter = site.data.siteconfig[2] %}
+{%assign github = site.data.siteconfig[3] %}
+
+<hr class="nav_hr">
+<div class="footer_content">
+    <section class="foot_copyright">
+        <div class="foot_copyright-text">
+            <p>Chocolate Network © 2021 - 2022</p>
         </div>
-    </footer>
+        <div class="nav" aria-label="social links">
+            <ul>
+                <li>
+                    <a href="{{discord.link}}" class="link link--dark " target="_blank"><i
+                            class="fab light fa-discord fa-fw"></i></a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/company/{{linkedin.company}}" class="link link--dark " target="_blank"><i
+                            class="fab fa-linkedin fa-fw"></i></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/{{twitter.user}}" class="link link--dark " target="_blank"><i
+                            class="fab fa-twitter fa-fw"></i></a>
+                </li>
+                <li>
+                    <a href="https://github.com/{{github.user}}" class="link link--dark " target="_blank"><i class="fab fa-github fa-fw"></i></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>

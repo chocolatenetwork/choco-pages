@@ -6,30 +6,23 @@ layout: default
 {%assign twitter = site.data.siteconfig[2] %}
 {%assign medium = site.data.siteconfig[3] %}
 {%assign litepaper = site.data.siteconfig[4] %}
-<!-- Two sections, one with the text, theother with the image -->
-<!-- add more columns till text fits horizontal -->
-<!-- should wrap when size of screen reduces (could set minmax for grid wrapping to rows) -->
-<!-- Hence, you would have to convert it to svg and set background?? Nah. You could place them over each other. The background then the transparent image, 
-      like acala did. Would be difficult moving around though, but one thing first, first we do horizontal layout -->
-
-<div class="land">
-  <!-- From the image, There are only two rows here, and each has its content at the bottom -->
+{%assign webapp = site.data.siteconfig[5] %}
+  <div class="land">
   <section class="land_formsection">
-    <h1><span class="text--thick">Building a safer Web 3.0 future</span> for all.</h1>
-    <p>Ending scam &amp; spam in crypto once and for all</p>
-    <div>Form</div>    
+    <h1 class="text--bold">Building a safer web 3.0 future for all</h1>
+    <p>Ending scam &amp; spam in crypto once and for all.</p>
   </section>
   <div class="land_links">
     <ul>
-      <!-- Inherit columns up to here -->
-      <!-- Select each and make them span one col. Select thee last and make it span 2-->
-      <li><a href="{{discord.link}}" target="_blank" rel="noopener noreferrer" class="link button button--transparent"><i class="fab fa-discord fa-fw fa-big"></i></a></li>
-      <li><a href="https://twitter.com/{{twitter.user}}" target="_blank" rel="noopener noreferrer" class="link button button--transparent"><i class="fab fa-twitter fa-fw fa-big"></i></a></li>
-      <li><a href="{{medium.user}}" target="_blank" rel="noopener noreferrer" class="link button button--transparent"><i class="fab fa-medium fa-fw fa-big"></i></a></li>
+      <li><a href="{{webapp.link}}" target="_blank" rel="noopener noreferrer" class="link button">TRY THE DEMO</a></li>
       <li><a href="{{litepaper.link}}" target="_blank" rel="noopener noreferrer" class="link button">Lite Paper</a></li>
-      <!-- The latter styled as a regular button, the formers styled as fitting buttons -->
     </ul>
   </div>
+  <img class="land_image" src="{{'/assets/images/splash-logo.webp' | relative_url}}"
+    alt="Chocolate X Polkadot and Kusama">
+  </div>
   
-  <img class="land_image" src="{{'/assets/images/splash-logo.webp' | relative_url}}" alt="chocolate X Polkadot and Kusama">
-</div>
+  <div class="container_last">
+    <iframe src="https://embeds.beehiiv.com/fa097289-2153-4053-98fe-67403641861d" data-test-id="beehiiv-embed"
+      width="100%" height="400" frameborder="0" scrolling="no" style="margin: 0; background-color: transparent"></iframe>
+  </div>

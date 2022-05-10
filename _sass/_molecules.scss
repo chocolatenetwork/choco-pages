@@ -19,6 +19,7 @@
   list-style-type: none;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 @mixin nav {
@@ -40,30 +41,55 @@
     }
   }
 }
+@mixin foot-cp-nav{
+  width: fit-content;
+  padding: ($body-padding / 2) 0;
+}
+@mixin foot-cp-p{
+  & > .foot_copyright-text > p{
+      margin-bottom:0; // center.
+  }
+  @media(min-width: 430px){
+    & > *{
+      flex-grow: 1;
+    }
+  }
+}
 @mixin foot-cp {
-  // always-max
   width: 100%;
-  height: 50px; // change if footer grows
   text-transform: uppercase;
-  // outline
-  @include border(1px, 0px); // only one: re: moxilla
-  // little centered text footer fn
+  // Auto layout
   display: flex;
   justify-content: center;
+  row-gap: $body-padding / 2;
   font-size: $tiny-text;
+  flex-wrap: wrap;
+  @include foot-cp-p;
+  & > .nav{
+    @include foot-cp-nav;
+  }
 }
-
-.nav_social {
+@mixin footer-content-pad{
+  // Solid.
+  padding: 3 * $body-padding $body-padding $body-padding;
+  // Writing mode compatibility
+  padding-block: 3 * $body-padding $body-padding;
+  padding-inline: $body-padding; // l-r.
+}
+.nav{
   @include nav;
   box-sizing: border-box;
-  padding: 10px;
-  height: 30px;
+}
+.nav_social {
+  height: 36px;
+  padding: $body-padding / 2 $body-padding;
+  @include rem-body-pad(false); 
 }
 
 .nav_main {
-  @include nav;
-  height: 70px;
-  @include apply-body-pad(false);
+  height: 75px;
+  padding: 0 $body-padding;
+  @include rem-body-pad(false);
 }
 
 .nav .link {
@@ -72,7 +98,19 @@
 .foot_copyright {
   @include foot-cp;
 }
-
+.footer_content{
+  width: 100%;
+  &>*{  
+    max-width: $grid-size;
+  }
+  box-sizing: border-box;
+  @include footer-content-pad;
+  @include rem-body-pad(false);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: $body-padding;
+}
 .land_links > ul {
   @include hr-list-of-links;
   align-items: start;

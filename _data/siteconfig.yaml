@@ -1,10 +1,12 @@
 - discord:
-  link: https://discord.com/channels/902287748768084009/902288460784762910
+  link: https://discord.gg/p6wqHGVMUP
 - linkedin:
   company: chocolate-network
 - twitter:
   user: ChocNetwork
-- medium:
-  user:
+- github:
+  user: chocolatenetwork
 - litepaper:
-  link: https://github.com/chocolatenetwork/docs/tree/main/litepaper
+  link: https://docs.google.com/document/d/1vFsjf2SO-spUB8JRcb6DZc8R32xMCeFnfy5b9Mu6ewE/edit?usp=sharing
+- webapp:
+  link: https://chocolate-demo.web.app

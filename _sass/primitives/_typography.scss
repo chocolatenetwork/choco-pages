@@ -58,22 +58,18 @@ h1 {
 }
 
 h2 {
-  font-size: $headingOne;
-}
-
-h3 {
   font-size: $headingTwo;
 }
 
-h4 {
+h3 {
   font-size: $headingThree;
 }
 
-h5 {
+h4 {
   font-size: $headingFour;
 }
 
-// move to blog and posts
-// full rule on title (h1
+h5 {
+  font-size: $headingFive;
+}
 
-// partial rule on headings with linkage
