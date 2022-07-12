@@ -45,6 +45,10 @@
   & p {
     margin-bottom: 0.5 * $body-padding; // To complete spacing with links.
   }
+  text-align: center;
+  @media (min-width: $grid-media-size) {
+    text-align: initial;
+  }
 }
 @mixin last-splash {
   padding-bottom: $body-padding * 2;

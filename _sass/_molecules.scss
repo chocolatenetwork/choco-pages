@@ -129,10 +129,14 @@
 // home page--land card
 .land_links > ul {
   @include hr-list-of-links;
-  align-items: start;
   height: 100%;
   flex-wrap: wrap;
   row-gap: 0.5rem;
+  justify-content: center;
+  @media (min-width:  $grid-media-size) {
+    align-items: start;
+    justify-content: initial;
+  }
 
   & > li:not(:first-child) {
     margin-left: 0.5rem;
