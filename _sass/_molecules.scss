@@ -48,7 +48,7 @@
   & > .foot_copyright-text > p {
     margin-bottom: 0; // center.
   }
-  @media (min-width: 430px) {
+  @media (min-width: $sm-break) {
     & > * {
       flex-grow: 1;
     }
@@ -82,9 +82,13 @@
   box-sizing: border-box;
 }
 .nav_social {
+  display: none;
   height: 36px;
   padding: $body-padding / 2 $body-padding;
   @include rem-body-pad(false);
+  @media (min-width: $sm-break) {
+    display: var(--initial-display, flex);
+  }
 }
 
 .nav_main {
@@ -94,8 +98,11 @@
 }
 .nav--highlight {
   width: 100%;
-  @include border;
+  @include border(0, 1px);
   @include grid-h-center;
+  @media (min-width: $sm-break) {
+    @include border(1px, 1px);
+  }
 }
 .nav .link {
   @include nav_link;
