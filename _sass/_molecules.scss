@@ -3,10 +3,8 @@
 // i.e inputs using multiple atoms, etc.
 //  Think of actual classes here. Small structure of layout in parents like how do you place els in an input box.
 // specials
-@import 'primitives';
-@import 'molecule_utils';
-
-
+@import "primitives";
+@import "molecule_utils";
 
 @mixin nav-li {
   margin-left: 1rem;
@@ -41,16 +39,17 @@
     }
   }
 }
-@mixin foot-cp-nav{
+@mixin foot-cp-nav {
   width: fit-content;
   padding: ($body-padding / 2) 0;
 }
-@mixin foot-cp-p{
-  & > .foot_copyright-text > p{
-      margin-bottom:0; // center.
+
+@mixin foot-cp-p {
+  & > .foot_copyright-text > p {
+    margin-bottom: 0; // center.
   }
-  @media(min-width: 430px){
-    & > *{
+  @media (min-width: 430px) {
+    & > * {
       flex-grow: 1;
     }
   }
@@ -65,25 +64,27 @@
   font-size: $tiny-text;
   flex-wrap: wrap;
   @include foot-cp-p;
-  & > .nav{
+  & > .nav {
     @include foot-cp-nav;
   }
 }
-@mixin footer-content-pad{
+@mixin footer-content-pad {
   // Solid.
   padding: 3 * $body-padding $body-padding $body-padding;
   // Writing mode compatibility
   padding-block: 3 * $body-padding $body-padding;
   padding-inline: $body-padding; // l-r.
 }
-.nav{
+
+//<nav>
+.nav {
   @include nav;
   box-sizing: border-box;
 }
 .nav_social {
   height: 36px;
   padding: $body-padding / 2 $body-padding;
-  @include rem-body-pad(false); 
+  @include rem-body-pad(false);
 }
 
 .nav_main {
@@ -91,16 +92,22 @@
   padding: 0 $body-padding;
   @include rem-body-pad(false);
 }
-
+.nav--highlight {
+  width: 100%;
+  @include border;
+  @include grid-h-center;
+}
 .nav .link {
   @include nav_link;
 }
+
+//footer
 .foot_copyright {
   @include foot-cp;
 }
-.footer_content{
+.footer_content {
   width: 100%;
-  &>*{  
+  & > * {
     max-width: $grid-size;
   }
   box-sizing: border-box;
@@ -111,6 +118,8 @@
   align-items: center;
   row-gap: $body-padding;
 }
+
+// home page--land card
 .land_links > ul {
   @include hr-list-of-links;
   align-items: start;

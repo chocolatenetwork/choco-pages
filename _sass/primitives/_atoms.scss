@@ -113,23 +113,6 @@ $transition-style: ease;
   border-style: $style;
   border-color: $greyish;
 }
-// Currently used only for the nav's usecase.
-@mixin hor-rule($thickness) {
-  // Remove extra space
-  margin: 0;
-  padding: 0;
-  // Removing sizing issue and fix height in place of border
-  width: 100%;
-  box-sizing: border-box;
-  height: $thickness;
-  border: 0px;
-  // Same color as prev iter.
-  background-color: $greyish;
-}
-
-.nav_hr {
-  @include hor-rule(1px);
-}
 ::selection {
   @include transparent-highlight;
 }
