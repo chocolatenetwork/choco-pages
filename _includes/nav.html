@@ -24,14 +24,14 @@
   </ul>
 </nav>
 <div class="nav--highlight">
-  <nav class="nav nav_main" aria-label="Site menu">
+  <nav data-state="closed" class="nav nav_main" aria-label="Site menu">
     <a class="logo link" href={{'/#home' | relative_url}}>
       <i class="chocolate"></i><span class="text--light">chocolate <b>network</b></span>
     </a>
-    <button type="button" class="button--transparent nav_burger">
+    <button type="button" data-state="closed" class="button--transparent nav_burger">
       {% include burger-menu.svg %}
     </button>
-    <ul>
+    <ul >
       <li><a href={{'/#home' | relative_url}} class="link link--light">home</a></li>
       <li><a href={{'/#about' | relative_url}} class="link link--light">about</a></li>
       <li><a href={{'/#footer' | relative_url}} class="link link--light">contact</a></li>
@@ -54,4 +54,22 @@
   };
   hashChange();
   window.addEventListener('hashchange', hashChange);
+  
+  // switch button
+  const button  =  document.querySelector('.nav_main .nav_burger');
+  const nav  =  document.querySelector('.nav_main');
+  function handleButton(e){
+    /** @type {HTMLButtonElement}*/
+    const currentState =  button.dataset.state;
+    const nextState =  flipButton(currentState);
+    button.dataset.state = nextState;
+    nav.dataset.state = nextState;
+  }
+  button.addEventListener('click', handleButton);
+  
+  // button State machine
+  function flipButton(state){
+    if(state === "closed") return "opened";
+    if(state === "opened") return "closed";
+  }
 </script>

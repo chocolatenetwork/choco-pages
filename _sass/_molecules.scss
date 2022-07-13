@@ -41,12 +41,58 @@
   }
 }
 
-@mixin hide-burger{
-  & .nav_burger{
-    display: inline-flex;
+@mixin hide-burger {
+  & .nav_burger {
 
     @media (min-width: $grid-media-size) {
       display: none;
+    }
+  }
+}
+@mixin main-nav-init-state{
+  @media (min-width: $grid-media-size) {
+    &[data-state="closed"],
+    &[data-state="opened"] {
+      ul {
+        display: flex;
+      }
+      .nav_burger {
+        display: none;
+      }
+    }
+  }
+}
+@mixin burger-closed {
+  #menu-opened {
+    display: none;
+  }
+  #menu-closed {
+    display: initial;
+  }
+}
+@mixin burger-opened {
+  #menu-opened {
+    display: initial;
+  }
+  #menu-closed {
+    display: none;
+  }
+}
+@mixin main-nav-state {
+  &[data-state="closed"] {
+    ul {
+      display: none;
+    }
+    .nav_burger {
+      @include burger-closed();
+    }
+  }
+  &[data-state="opened"] {
+    ul {
+      display: flex;
+    }
+    .nav_burger {
+      @include burger-opened();
     }
   }
 }
@@ -107,7 +153,9 @@
   height: 75px;
   padding: 0 $body-padding;
   @include rem-body-pad(false);
-  @include hide-burger;
+  // Swap order for default
+  @include main-nav-state;
+  @include main-nav-init-state;
 }
 .nav--highlight {
   width: 100%;
@@ -146,7 +194,7 @@
   flex-wrap: wrap;
   row-gap: 0.5rem;
   justify-content: center;
-  @media (min-width:  $grid-media-size) {
+  @media (min-width: $grid-media-size) {
     align-items: start;
     justify-content: initial;
   }
