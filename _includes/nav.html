@@ -25,8 +25,12 @@
 </nav>
 <div class="nav--highlight">
   <nav class="nav nav_main" aria-label="Site menu">
-    <a class="logo link" href={{'/#home' | relative_url}}><i class="chocolate"></i><span class="text--light">chocolate
-        <b>network</b></span></a>
+    <a class="logo link" href={{'/#home' | relative_url}}>
+      <i class="chocolate"></i><span class="text--light">chocolate <b>network</b></span>
+    </a>
+    <button type="button" class="button--transparent nav_burger">
+      {% include burger-menu.svg %}
+    </button>
     <ul>
       <li><a href={{'/#home' | relative_url}} class="link link--light">home</a></li>
       <li><a href={{'/#about' | relative_url}} class="link link--light">about</a></li>

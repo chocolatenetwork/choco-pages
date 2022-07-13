@@ -3,7 +3,7 @@ image:
   context: .github
 tasks:
   - init: gem install jekyll bundler && jekyll build
-    command: jekyll serve
+    command: jekyll serve --livereload
 vscode:
   extensions:
     - sissel.shopify-liquid

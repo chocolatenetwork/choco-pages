@@ -29,6 +29,7 @@
     color: darken($nav-link-text, 10%);
   }
 }
+
 /*Element atoms*/
 @mixin link {
   text-decoration: none;
@@ -45,14 +46,14 @@
     color: $wrap-red;
   }
 }
+
+// <btn>
 @mixin hop {
-  bottom: 1px;
-  position: relative;
-  left: 0.5px;
+  transform: translate(0.5px,-1px);
 }
 //--- mixin vars
 $btn-border: 0.1rem;
-$transition-duration: 0.3s;
+$transition-duration: 0ms;
 $transition-style: ease;
 @mixin button {
   // No, most styles here aren't for button, include in html instead.
@@ -75,9 +76,25 @@ $transition-style: ease;
   }
 }
 
+// merge into button later
+@mixin button-light { 
+  display: inline-flex;
+  box-sizing: border-box;
+  white-space: nowrap;
+  padding: 0;
+  border: none;
+  
+  font-size: $tiny-text;
+  font-weight: $thick;
+
+  background-color: var(--btn-bg, #{$text-color});
+  color: var(--btn-txt-col, #{$primary});
+
+  cursor: pointer;
+}
 
 
-
+// <img>
 @mixin responsive-image($base-w: size, $base-h: size) {
   display: block;
   width: 100%;
@@ -143,4 +160,10 @@ body {
 }
 .button {
   @include button;
+}
+
+.button--transparent {
+  // include var before @ rule as it's literally cp n paste
+  --btn-bg: transparent;
+  @include button-light;
 }

@@ -6,6 +6,7 @@
 @import "primitives";
 @import "molecule_utils";
 
+// <nav incs>
 @mixin nav-li {
   margin-left: 1rem;
 }
@@ -39,6 +40,17 @@
     }
   }
 }
+
+@mixin hide-burger{
+  & .nav_burger{
+    display: inline-flex;
+
+    @media (min-width: $grid-media-size) {
+      display: none;
+    }
+  }
+}
+// <footer incs>
 @mixin foot-cp-nav {
   width: fit-content;
   padding: ($body-padding / 2) 0;
@@ -95,6 +107,7 @@
   height: 75px;
   padding: 0 $body-padding;
   @include rem-body-pad(false);
+  @include hide-burger;
 }
 .nav--highlight {
   width: 100%;
