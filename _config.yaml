@@ -5,6 +5,17 @@ defaults:
       path: ''
     values:
       title: Chocolate network
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .gitpod.yml
+  - .gitignore
+  - CHANGELOG.md
+  - README.md
 
-# Remove *.html
 permalink: pretty
