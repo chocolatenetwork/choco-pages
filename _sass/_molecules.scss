@@ -143,6 +143,9 @@
   @include nav-base();
   box-sizing: border-box;
 }
+.nav--flex {
+  @include flex-end-center;
+}
 .nav_social {
   height: 36px;
   padding: $body-padding / 2 $body-padding;
