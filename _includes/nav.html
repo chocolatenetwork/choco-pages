@@ -26,15 +26,15 @@
 <div class="nav--highlight">
   <nav data-state="closed" class="nav nav_main" aria-label="Site menu">
     <a class="logo link" href={{'/#home' | relative_url}}>
-      <i class="chocolate"></i><span class="text--light">chocolate <b>network</b></span>
+      <i class="chocolate"></i><span class="text--light nav_home-link">chocolate <b data-target>network</b></span>
     </a>
     <button type="button" data-state="closed" class="button--transparent nav_burger">
       {% include burger-menu.svg %}
     </button>
     <ul >
-      <li><a href={{'/#home' | relative_url}} class="link link--light">home</a></li>
-      <li><a href={{'/#about' | relative_url}} class="link link--light">about</a></li>
-      <li><a href={{'/#footer' | relative_url}} class="link link--light">contact</a></li>
+      <li><a href={{'/#home' | relative_url}} class="link link--light nav_link">home</a></li>
+      <li><a href={{'/#about' | relative_url}} class="link link--light nav_link">about</a></li>
+      <li><a href={{'/#footer' | relative_url}} class="link link--light nav_link">contact</a></li>
     </ul>
   </nav>
 </div>
@@ -45,7 +45,7 @@
   const memo = {prev: null};
   const hashStateChange = function(){
     const currEl = findMatch(window.location);
-    console.log("Hash", currEl);
+    if(!currEl) return;
     if(memo.prev) memo.prev.dataset.state =  "off";
     memo.prev =  currEl;
     currEl.dataset.state = "on";

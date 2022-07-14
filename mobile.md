@@ -9,4 +9,7 @@
 
 1. Break point for hamburger is when grid collapses.
 2. Show burger menu and hide nav.
-3. Then do the rest.
+3. Fix the two text stuff.
+   1. Hide  `network`
+   2. Straighten and style opened ul under nav-main-state.
+   3. Extra (very optional): Open animation. May just visually hide the ul then show by expanding height prop.

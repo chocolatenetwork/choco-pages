@@ -21,7 +21,7 @@
   flex-wrap: wrap;
 }
 
-@mixin nav-base{
+@mixin nav-base {
   width: 100%;
   max-width: $grid-size;
 
@@ -39,7 +39,7 @@
     }
   }
 }
-@mixin flex-end-center{
+@mixin flex-end-center {
   display: flex;
   justify-content: end;
   align-items: center;
@@ -47,18 +47,22 @@
 
 @mixin hide-burger {
   & .nav_burger {
-
     @media (min-width: $grid-media-size) {
       display: none;
     }
   }
 }
-@mixin main-nav-init-state{
+@mixin main-nav-init-state {
   @media (min-width: $grid-media-size) {
     &[data-state="closed"],
     &[data-state="opened"] {
       ul {
         display: flex;
+        align-items: center;
+        flex-direction: row;
+        & li{
+          @include nav-li();
+        }
       }
       .nav_burger {
         display: none;
@@ -93,12 +97,25 @@
   }
   &[data-state="opened"] {
     ul {
-      display: flex;
+      flex-direction: column;
+      align-items: initial;
+      text-align: center;
+      grid-column: 1 / -1;
+      & li{
+        margin-left: 0;
+      }
     }
     .nav_burger {
       @include burger-opened();
     }
   }
+}
+@mixin menu-grid{
+  display: grid;
+  grid-template-columns: auto max-content;
+  grid-auto-rows: minmax(75px, max-content);
+  row-gap: $body-padding;
+  align-items: center;
 }
 // <footer incs>
 @mixin foot-cp-nav {
@@ -152,20 +169,16 @@
   @include rem-body-pad(false);
   @include flex-end-center();
 }
-
 .nav_main {
   // default
   min-height: 75px;
-  display: grid;
-  grid-template-columns: auto max-content;
-  grid-auto-rows: minmax(75px, max-content);
-  align-items: center;
   padding: 0 $body-padding;
+  @include menu-grid;
   @include rem-body-pad(false);
   // Swap order for default
   @include main-nav-state;
   @include main-nav-init-state;
-  @media (min-width: $sm-break) {
+  @media (min-width: $grid-media-size) {
     @include flex-end-center();
   }
 }
@@ -174,10 +187,22 @@
   @include border(1px, 1px);
   @include grid-h-center;
 }
-.nav .link {
-  @include nav_link;
+.nav_home-link [data-target] {
+  display: none;
+  @media (min-width: $sm-break) {
+    display: initial;
+  }
 }
+.nav_link {
+  @include nav_link;
+  display: block;
+  padding: $body-padding 0;
 
+  @media (min-width: $grid-media-size) {
+    display: initial;    
+    padding: initial;
+  }
+}
 //footer
 .foot_copyright {
   @include foot-cp;
