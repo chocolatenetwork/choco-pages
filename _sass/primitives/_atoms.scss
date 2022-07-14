@@ -42,7 +42,7 @@
   // Then create a variant of link that is no-underline
 }
 @mixin nav_link {
-  &.current {
+  &[data-state="on"] {
     color: $wrap-red;
   }
 }

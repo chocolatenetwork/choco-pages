@@ -42,18 +42,25 @@
 <script>
   // make link active if url matches
   const links = document.querySelectorAll('.nav_main ul li a');
-  const hashChange = function () {
-    var url = window.location.href;
-    for (var i = 0; i < links.length; i++) {
+  const memo = {prev: null};
+  const hashStateChange = function(){
+    const currEl = findMatch(window.location);
+    console.log("Hash", currEl);
+    if(memo.prev) memo.prev.dataset.state =  "off";
+    memo.prev =  currEl;
+    currEl.dataset.state = "on";
+  }
+  const findMatch = function(loc){
+    const url = loc.href;
+    for (let i = 0; i < links.length; i++) {
       if (url.indexOf(links[i].href) > -1) {
-        links[i].classList.add('current');
-      } else {
-        links[i].classList.remove('current');
+        return links[i];
       }
     }
-  };
-  hashChange();
-  window.addEventListener('hashchange', hashChange);
+  }
+  // Necessary for cases where a match is where we start.
+  hashStateChange();
+  window.addEventListener('hashchange', hashStateChange);
   
   // switch button
   const button  =  document.querySelector('.nav_main .nav_burger');

@@ -21,15 +21,14 @@
   flex-wrap: wrap;
 }
 
-@mixin nav {
+@mixin nav-base{
   width: 100%;
   max-width: $grid-size;
-  display: flex;
-  justify-content: end;
+
+  // content styles
   & > .logo {
     @include nav-logo;
   }
-  align-items: center;
 
   & > ul {
     @include hr-list-of-links;
@@ -39,6 +38,11 @@
       @include nav-li;
     }
   }
+}
+@mixin flex-end-center{
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 
 @mixin hide-burger {
@@ -136,34 +140,36 @@
 
 //<nav>
 .nav {
-  @include nav;
+  @include nav-base();
   box-sizing: border-box;
 }
 .nav_social {
-  display: none;
   height: 36px;
   padding: $body-padding / 2 $body-padding;
   @include rem-body-pad(false);
-  @media (min-width: $sm-break) {
-    display: var(--initial-display, flex);
-  }
+  @include flex-end-center();
 }
 
 .nav_main {
-  height: 75px;
+  // default
+  min-height: 75px;
+  display: grid;
+  grid-template-columns: auto max-content;
+  grid-auto-rows: minmax(75px, max-content);
+  align-items: center;
   padding: 0 $body-padding;
   @include rem-body-pad(false);
   // Swap order for default
   @include main-nav-state;
   @include main-nav-init-state;
+  @media (min-width: $sm-break) {
+    @include flex-end-center();
+  }
 }
 .nav--highlight {
   width: 100%;
-  @include border(0, 1px);
+  @include border(1px, 1px);
   @include grid-h-center;
-  @media (min-width: $sm-break) {
-    @include border(1px, 1px);
-  }
 }
 .nav .link {
   @include nav_link;
