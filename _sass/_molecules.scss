@@ -110,7 +110,7 @@
     }
   }
 }
-@mixin menu-grid{
+@mixin nav-main-grid{
   display: grid;
   grid-template-columns: auto max-content;
   grid-auto-rows: minmax(75px, max-content);
@@ -173,9 +173,9 @@
   // default
   min-height: 75px;
   padding: 0 $body-padding;
-  @include menu-grid;
+  @include nav-main-grid;
   @include rem-body-pad(false);
-  // Swap order for default
+  // Ordered to make init state default
   @include main-nav-state;
   @include main-nav-init-state;
   @media (min-width: $grid-media-size) {
@@ -193,8 +193,8 @@
     display: initial;
   }
 }
-.nav_link {
-  @include nav_link;
+.main-nav_link {
+  @include main-nav_link;
   display: block;
   padding: $body-padding 0;
 

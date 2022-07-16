@@ -41,7 +41,7 @@
   // Get a cool underline effect for nav link current that also fits for a regular link text underline
   // Then create a variant of link that is no-underline
 }
-@mixin nav_link {
+@mixin main-nav_link {
   &[data-state="on"] {
     color: $wrap-red;
   }
