@@ -29,15 +29,6 @@
   & > .logo {
     @include nav-logo;
   }
-
-  & > ul {
-    @include hr-list-of-links;
-
-    & > li {
-      font-size: $smaller-text;
-      @include nav-li;
-    }
-  }
 }
 @mixin flex-end-center {
   display: flex;
@@ -56,7 +47,7 @@
   @media (min-width: $grid-media-size) {
     &[data-state="closed"],
     &[data-state="opened"] {
-      ul {
+      .nav_ul {
         display: flex;
         align-items: center;
         flex-direction: row;
@@ -88,7 +79,7 @@
 }
 @mixin main-nav-state {
   &[data-state="closed"] {
-    ul {
+    .nav_ul {
       display: none;
     }
     .nav_burger {
@@ -96,7 +87,7 @@
     }
   }
   &[data-state="opened"] {
-    ul {
+    .nav_ul {
       flex-direction: column;
       align-items: initial;
       text-align: center;
@@ -203,6 +194,15 @@
     padding: initial;
   }
 }
+.nav_ul{
+  @include hr-list-of-links;
+
+  & > li {
+    font-size: $smaller-text;
+    @include nav-li;
+  }
+}
+
 //footer
 .foot_copyright {
   @include foot-cp;
