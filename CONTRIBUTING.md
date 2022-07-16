@@ -2,19 +2,18 @@
 layout: single-content
 ---
 
-## Contribute to AsyncAPI Tools
+## Contribute to Chocolate Network 🍫
 
-Code isn't the only way to contribute to OSS; Dev Docs are a huge help that benefit the entire OSS ecosystem. At AsyncAPI, we value Doc contributions as much as every other type of contribution. ❤️
+Chocolate is still growing, and we would like you to grow with us! Our vision for this platform is vast, but we can only do so much alone.
 
-To get started as a Docs contributor:
+Generally, you can hop on any of these repositories on GitHub and checkout the issues tab for what is currently needed/being worked on. You can also consult the `README` file of each repository for more information with regards to setup, contribution, etc.
 
-1. Familiarize yourself with our project's Contribution Guide and our Code of Conduct.
-1. Head over to our AsyncAPI Docs Board.
-1. Pick an issue you would like to contribute to and leave a comment introducing yourself. This is also the perfect place to leave any questions you may have on how to get started.
-1. If there is no work done in that Docs issue yet, feel free to open a PR and get started!
+1. Parachain (Substrate + Rust): [`chocolatenetwork/chocolate-parachain`](https://github.com/chocolatenetwork/chocolate-parachain)
+2. Web app (React + Typescript): [chocolatenetwork/chocolate-front-end](https://github.com/chocolatenetwork/chocolate-front-end)
+3. Content and Documentation: [chocolatenetwork/choco-pages](https://github.com/chocolatenetwork/choco-pages)
 
-### Docs contributor questions
+### Contributor questions
 
-Do you have a documentation contributor question and you're wondering how to tag me into a GitHub discussion or PR? Never fear!
+Got further questions? Please reach out on our community [Discord](https://discord.gg/p6wqHGVMUP), or tag related maintainers on GitHub. We look forward to your contributions! 
 
-Tag me in your AsyncAPI Doc PRs or GitHub Discussions via my GitHub handle, alequetzalli 🐙.
+> \- Team Chocolate 🍫
