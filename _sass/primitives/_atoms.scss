@@ -77,7 +77,7 @@ $transition-style: ease;
 }
 
 // merge into button later
-@mixin button-light { 
+@mixin button-light {
   display: inline-flex;
   box-sizing: border-box;
   white-space: nowrap;
@@ -148,6 +148,16 @@ $transition-style: ease;
   // Modifier, hence it stands alone
   @include lighten-on-hover;
 }
+.button {
+  @include button;
+}
+
+.button--transparent {
+  // include var before @include so it's defined before use inside.
+  --btn-bg: transparent;
+  @include button-light;
+}
+
 // misc traits describing behaviour of organisms (cannot standalone, hence atomic).
 html:focus-within {
   @include smooth-scroll;
@@ -157,13 +167,4 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   @include motion-accessibility;
-}
-.button {
-  @include button;
-}
-
-.button--transparent {
-  // include var before @ rule as it's literally cp n paste
-  --btn-bg: transparent;
-  @include button-light;
 }
