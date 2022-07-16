@@ -29,6 +29,7 @@
     color: darken($nav-link-text, 10%);
   }
 }
+
 /*Element atoms*/
 @mixin link {
   text-decoration: none;
@@ -40,19 +41,19 @@
   // Get a cool underline effect for nav link current that also fits for a regular link text underline
   // Then create a variant of link that is no-underline
 }
-@mixin nav_link {
-  &.current {
+@mixin main-nav_link {
+  &[data-state="on"] {
     color: $wrap-red;
   }
 }
+
+// <btn>
 @mixin hop {
-  bottom: 1px;
-  position: relative;
-  left: 0.5px;
+  transform: translate(0.5px,-1px);
 }
 //--- mixin vars
 $btn-border: 0.1rem;
-$transition-duration: 0.3s;
+$transition-duration: 0ms;
 $transition-style: ease;
 @mixin button {
   // No, most styles here aren't for button, include in html instead.
@@ -75,9 +76,25 @@ $transition-style: ease;
   }
 }
 
+// merge into button later
+@mixin button-light {
+  display: inline-flex;
+  box-sizing: border-box;
+  white-space: nowrap;
+  padding: 0;
+  border: none;
+  
+  font-size: $tiny-text;
+  font-weight: $thick;
+
+  background-color: var(--btn-bg, #{$text-color});
+  color: var(--btn-txt-col, #{$primary});
+
+  cursor: pointer;
+}
 
 
-
+// <img>
 @mixin responsive-image($base-w: size, $base-h: size) {
   display: block;
   width: 100%;
@@ -113,23 +130,6 @@ $transition-style: ease;
   border-style: $style;
   border-color: $greyish;
 }
-// Currently used only for the nav's usecase.
-@mixin hor-rule($thickness) {
-  // Remove extra space
-  margin: 0;
-  padding: 0;
-  // Removing sizing issue and fix height in place of border
-  width: 100%;
-  box-sizing: border-box;
-  height: $thickness;
-  border: 0px;
-  // Same color as prev iter.
-  background-color: $greyish;
-}
-
-.nav_hr {
-  @include hor-rule(1px);
-}
 ::selection {
   @include transparent-highlight;
 }
@@ -148,6 +148,16 @@ $transition-style: ease;
   // Modifier, hence it stands alone
   @include lighten-on-hover;
 }
+.button {
+  @include button;
+}
+
+.button--transparent {
+  // include var before @include so it's defined before use inside.
+  --btn-bg: transparent;
+  @include button-light;
+}
+
 // misc traits describing behaviour of organisms (cannot standalone, hence atomic).
 html:focus-within {
   @include smooth-scroll;
@@ -157,7 +167,4 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   @include motion-accessibility;
-}
-.button {
-  @include button;
 }

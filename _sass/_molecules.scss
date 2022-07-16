@@ -3,11 +3,10 @@
 // i.e inputs using multiple atoms, etc.
 //  Think of actual classes here. Small structure of layout in parents like how do you place els in an input box.
 // specials
-@import 'primitives';
-@import 'molecule_utils';
+@import "primitives";
+@import "molecule_utils";
 
-
-
+// <nav incs>
 @mixin nav-li {
   margin-left: 1rem;
 }
@@ -22,35 +21,105 @@
   flex-wrap: wrap;
 }
 
-@mixin nav {
+@mixin nav-base {
   width: 100%;
   max-width: $grid-size;
-  display: flex;
-  justify-content: end;
+
+  // content styles
   & > .logo {
     @include nav-logo;
   }
+}
+@mixin flex-end-center {
+  display: flex;
+  justify-content: end;
   align-items: center;
+}
 
-  & > ul {
-    @include hr-list-of-links;
-
-    & > li {
-      font-size: $smaller-text;
-      @include nav-li;
+@mixin hide-burger {
+  & .nav_burger {
+    @media (min-width: $grid-media-size) {
+      display: none;
     }
   }
 }
-@mixin foot-cp-nav{
+@mixin main-nav-init-state {
+  @media (min-width: $grid-media-size) {
+    &[data-state="closed"],
+    &[data-state="opened"] {
+      .nav_ul {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        & li{
+          @include nav-li();
+        }
+      }
+      .nav_burger {
+        display: none;
+      }
+    }
+  }
+}
+@mixin burger-closed {
+  #menu-opened {
+    display: none;
+  }
+  #menu-closed {
+    display: initial;
+  }
+}
+@mixin burger-opened {
+  #menu-opened {
+    display: initial;
+  }
+  #menu-closed {
+    display: none;
+  }
+}
+@mixin main-nav-state {
+  &[data-state="closed"] {
+    .nav_ul {
+      display: none;
+    }
+    .nav_burger {
+      @include burger-closed();
+    }
+  }
+  &[data-state="opened"] {
+    .nav_ul {
+      flex-direction: column;
+      align-items: initial;
+      text-align: center;
+      grid-column: 1 / -1;
+      & li{
+        margin-left: 0;
+      }
+    }
+    .nav_burger {
+      @include burger-opened();
+    }
+  }
+}
+@mixin nav-main-grid{
+  display: grid;
+  grid-template-columns: auto max-content;
+  grid-auto-rows: minmax(75px, max-content);
+  row-gap: $body-padding;
+  align-items: center;
+}
+// <footer incs>
+@mixin foot-cp-nav {
   width: fit-content;
   padding: ($body-padding / 2) 0;
 }
-@mixin foot-cp-p{
-  & > .foot_copyright-text > p{
-      margin-bottom:0; // center.
+
+@mixin foot-cp-p {
+  & > .foot_copyright-text > p {
+    margin-bottom: 0; // center.
   }
-  @media(min-width: 430px){
-    & > *{
+  @media (min-width: $sm-break) {
+    & > * {
       flex-grow: 1;
     }
   }
@@ -65,42 +134,82 @@
   font-size: $tiny-text;
   flex-wrap: wrap;
   @include foot-cp-p;
-  & > .nav{
+  & > .nav {
     @include foot-cp-nav;
   }
 }
-@mixin footer-content-pad{
+@mixin footer-content-pad {
   // Solid.
   padding: 3 * $body-padding $body-padding $body-padding;
   // Writing mode compatibility
   padding-block: 3 * $body-padding $body-padding;
   padding-inline: $body-padding; // l-r.
 }
-.nav{
-  @include nav;
+
+//<nav>
+.nav {
+  @include nav-base();
   box-sizing: border-box;
+}
+.nav--flex {
+  @include flex-end-center;
 }
 .nav_social {
   height: 36px;
   padding: $body-padding / 2 $body-padding;
-  @include rem-body-pad(false); 
-}
-
-.nav_main {
-  height: 75px;
-  padding: 0 $body-padding;
   @include rem-body-pad(false);
+  @include flex-end-center();
+}
+.nav_main {
+  // default
+  min-height: 75px;
+  padding: 0 $body-padding;
+  @include nav-main-grid;
+  @include rem-body-pad(false);
+  // Ordered to make init state default
+  @include main-nav-state;
+  @include main-nav-init-state;
+  @media (min-width: $grid-media-size) {
+    @include flex-end-center();
+  }
+}
+.nav--highlight {
+  width: 100%;
+  @include border(1px, 1px);
+  @include grid-h-center;
+}
+.nav_home-link [data-target] {
+  display: none;
+  @media (min-width: $sm-break) {
+    display: initial;
+  }
+}
+.main-nav_link {
+  @include main-nav_link;
+  display: block;
+  padding: $body-padding 0;
+
+  @media (min-width: $grid-media-size) {
+    display: initial;    
+    padding: initial;
+  }
+}
+.nav_ul{
+  @include hr-list-of-links;
+
+  & > li {
+    font-size: $smaller-text;
+    @include nav-li;
+  }
 }
 
-.nav .link {
-  @include nav_link;
-}
+//footer
 .foot_copyright {
   @include foot-cp;
 }
-.footer_content{
+.footer_content {
   width: 100%;
-  &>*{  
+  & > * {
     max-width: $grid-size;
   }
   box-sizing: border-box;
@@ -111,12 +220,18 @@
   align-items: center;
   row-gap: $body-padding;
 }
+
+// home page--land card
 .land_links > ul {
   @include hr-list-of-links;
-  align-items: start;
   height: 100%;
   flex-wrap: wrap;
   row-gap: 0.5rem;
+  justify-content: center;
+  @media (min-width: $grid-media-size) {
+    align-items: start;
+    justify-content: initial;
+  }
 
   & > li:not(:first-child) {
     margin-left: 0.5rem;

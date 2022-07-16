@@ -2,8 +2,8 @@ image:
   file: .github/dockerfiles/.gitpod.Dockerfile
   context: .github
 tasks:
-  - init: jekyll build
-    command: jekyll serve
+  - init: gem install bundler && bundle install
+    command: bundle exec jekyll serve --livereload
 vscode:
   extensions:
     - sissel.shopify-liquid

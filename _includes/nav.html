@@ -3,47 +3,80 @@
 {%assign twitter = site.data.siteconfig[2] %}
 {%assign github = site.data.siteconfig[3] %}
 
+<!-- maintain .nav .nav_social order for display override. -->
 <nav class="nav nav_social" aria-label="social links">
-  <ul>
+  <ul class="nav_ul">
     <li>
       <a href="{{discord.link}}" class="link link--dark " target="_blank"><i class="fab light fa-discord fa-fw"></i></a>
     </li>
     <li>
-      <a href="https://www.linkedin.com/company/{{linkedin.company}}" class="link link--dark " target="_blank"><i class="fab fa-linkedin fa-fw"></i></a>
+      <a href="https://www.linkedin.com/company/{{linkedin.company}}" class="link link--dark " target="_blank"><i
+          class="fab fa-linkedin fa-fw"></i></a>
     </li>
     <li>
-      <a href="https://twitter.com/{{twitter.user}}" class="link link--dark " target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      <a href="https://twitter.com/{{twitter.user}}" class="link link--dark " target="_blank"><i
+          class="fab fa-twitter fa-fw"></i></a>
     </li>
     <li>
-      <a href="https://github.com/{{github.user}}" class="link link--dark " target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      <a href="https://github.com/{{github.user}}" class="link link--dark " target="_blank"><i
+          class="fab fa-github fa-fw"></i></a>
     </li>
   </ul>
 </nav>
-<hr class="nav_hr">
-<nav class="nav nav_main" aria-label="Site menu">
-  <a class="logo link" href={{'/#home' | relative_url}}
-    ><i class="chocolate"></i><span class="text--light">chocolate <b>network</b></span></a
-  >
-  <ul>
-    <li><a href={{'/#home' | relative_url}} class="link link--light">home</a></li>
-    <li><a href={{'/#about' | relative_url}} class="link link--light">about</a></li>
-    <li><a href={{'/#footer' | relative_url}} class="link link--light">contact</a></li>
-  </ul>
-</nav>
-<hr class="nav_hr">
+<div class="nav--highlight">
+  <nav data-state="closed" class="nav nav_main" aria-label="Site menu">
+    <a class="logo link" href={{'/#home' | relative_url}}>
+      <i class="chocolate"></i><span class="text--light nav_home-link">chocolate <b data-target>network</b></span>
+    </a>
+    <button type="button" data-state="closed" class="button--transparent nav_burger">
+      {% include burger-menu.svg %}
+    </button>
+    <ul class="nav_ul" >
+      <li><a href={{'/#home' | relative_url}} class="link link--light main-nav_link">home</a></li>
+      <li><a href={{'/#about' | relative_url}} class="link link--light main-nav_link">about</a></li>
+      <li><a href={{'/#footer' | relative_url}} class="link link--light main-nav_link">contact</a></li>
+    </ul>
+  </nav>
+</div>
+
 <script>
   // make link active if url matches
   const links = document.querySelectorAll('.nav_main ul li a');
-  const hashChange = function () {
-    var url = window.location.href;
-    for (var i = 0; i < links.length; i++) {
+  const memo = {prev: null};
+  const hashStateChange = function(){
+    const currEl = findMatch(window.location);
+    if(!currEl) return;
+    if(memo.prev) memo.prev.dataset.state =  "off";
+    memo.prev =  currEl;
+    currEl.dataset.state = "on";
+  }
+  const findMatch = function(loc){
+    const url = loc.href;
+    for (let i = 0; i < links.length; i++) {
       if (url.indexOf(links[i].href) > -1) {
-        links[i].classList.add('current');
-      } else {
-        links[i].classList.remove('current');
+        return links[i];
       }
     }
-  };
-  hashChange();
-  window.addEventListener('hashchange', hashChange);
+  }
+  // Necessary for cases where a match is where we start.
+  hashStateChange();
+  window.addEventListener('hashchange', hashStateChange);
+  
+  // switch button
+  const button  =  document.querySelector('.nav_main .nav_burger');
+  const nav  =  document.querySelector('.nav_main');
+  function handleButton(e){
+    /** @type {HTMLButtonElement}*/
+    const currentState =  button.dataset.state;
+    const nextState =  flipButton(currentState);
+    button.dataset.state = nextState;
+    nav.dataset.state = nextState;
+  }
+  button.addEventListener('click', handleButton);
+  
+  // button State machine
+  function flipButton(state){
+    if(state === "closed") return "opened";
+    if(state === "opened") return "closed";
+  }
 </script>
