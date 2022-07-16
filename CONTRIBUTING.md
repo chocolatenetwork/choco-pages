@@ -8,7 +8,7 @@ Chocolate is still growing, and we would like you to grow with us! Our vision fo
 
 Generally, you can hop on any of these repositories on GitHub and checkout the issues tab for what is currently needed/being worked on. You can also consult the `README` file of each repository for more information with regards to setup, contribution, etc.
 
-1. Parachain (Substrate + Rust): [`chocolatenetwork/chocolate-parachain`](https://github.com/chocolatenetwork/chocolate-parachain)
+1. Parachain (Substrate + Rust): [chocolatenetwork/chocolate-parachain](https://github.com/chocolatenetwork/chocolate-parachain)
 2. Web app (React + Typescript): [chocolatenetwork/chocolate-front-end](https://github.com/chocolatenetwork/chocolate-front-end)
 3. Content and Documentation: [chocolatenetwork/choco-pages](https://github.com/chocolatenetwork/choco-pages)
 
