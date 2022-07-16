@@ -13,6 +13,7 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - .vscode/
   - .gitpod.yml
   - .gitignore
   - CHANGELOG.md

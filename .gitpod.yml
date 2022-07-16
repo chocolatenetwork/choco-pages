@@ -1,8 +1,5 @@
-image:
-  file: .github/dockerfiles/.gitpod.Dockerfile
-  context: .github
 tasks:
-  - init: gem install bundler && bundle install
+  - init:  bundle install
     command: bundle exec jekyll serve --livereload
 vscode:
   extensions:

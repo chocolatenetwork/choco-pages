@@ -8,7 +8,9 @@
 
 // <nav incs>
 @mixin nav-li {
-  margin-left: 1rem;
+  &:not(:first-of-type) {
+    margin-left: 1rem;
+  }
 }
 @mixin nav-logo {
   color: $nav-logo-text;
@@ -103,9 +105,10 @@
 }
 @mixin nav-main-grid{
   display: grid;
-  grid-template-columns: auto max-content;
+  grid-template-columns: auto max-content max-content;
   grid-auto-rows: minmax(75px, max-content);
   row-gap: $body-padding;
+  column-gap: $body-padding;
   align-items: center;
 }
 // <footer incs>
