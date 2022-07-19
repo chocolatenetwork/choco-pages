@@ -6,10 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Help wanted page
+- `single-content` layout for pages without a multi-card layout.
 
 ### Changed
 
 ### Removed
+- `margin-left` on the first nav `li` 
 
 ## [0.0.1-beta.4] - 2022-07-16
 ### Added

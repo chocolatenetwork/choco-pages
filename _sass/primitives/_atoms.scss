@@ -151,11 +151,20 @@ $transition-style: ease;
 .button {
   @include button;
 }
-
 .button--transparent {
   // include var before @include so it's defined before use inside.
   --btn-bg: transparent;
   @include button-light;
+}
+// order must be maintained for overriding.
+.single-content-wrapper a {
+  color: $blue-link;
+}
+.single-content-wrapper a:visited {
+  color:  $visited-link;
+}
+.single-content-wrapper a:active {
+  color: $active-link;
 }
 
 // misc traits describing behaviour of organisms (cannot standalone, hence atomic).
