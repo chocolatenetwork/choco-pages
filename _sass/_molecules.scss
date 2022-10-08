@@ -1,0 +1,250 @@
+// all atoms and associated primitives available here.
+// use these to compose molecules
+// i.e inputs using multiple atoms, etc.
+//  Think of actual classes here. Small structure of layout in parents like how do you place els in an input box.
+// specials
+@import "primitives";
+@import "molecule_utils";
+
+// <nav incs>
+@mixin nav-li {
+  &:not(:first-of-type) {
+    margin-left: 1rem;
+  }
+}
+@mixin nav-logo {
+  color: $nav-logo-text;
+  margin-right: auto;
+}
+@mixin hr-list-of-links {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin nav-base {
+  width: 100%;
+  max-width: $grid-size;
+
+  // content styles
+  & > .logo {
+    @include nav-logo;
+  }
+}
+@mixin flex-end-center {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+@mixin hide-burger {
+  & .nav_burger {
+    @media (min-width: $grid-media-size) {
+      display: none;
+    }
+  }
+}
+@mixin main-nav-init-state {
+  @media (min-width: $grid-media-size) {
+    &[data-state="closed"],
+    &[data-state="opened"] {
+      .nav_ul {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        & li{
+          @include nav-li();
+        }
+      }
+      .nav_burger {
+        display: none;
+      }
+    }
+  }
+}
+@mixin burger-closed {
+  #menu-opened {
+    display: none;
+  }
+  #menu-closed {
+    display: initial;
+  }
+}
+@mixin burger-opened {
+  #menu-opened {
+    display: initial;
+  }
+  #menu-closed {
+    display: none;
+  }
+}
+@mixin main-nav-state {
+  &[data-state="closed"] {
+    .nav_ul {
+      display: none;
+    }
+    .nav_burger {
+      @include burger-closed();
+    }
+  }
+  &[data-state="opened"] {
+    .nav_ul {
+      flex-direction: column;
+      align-items: initial;
+      text-align: center;
+      grid-column: 1 / -1;
+      & li{
+        margin-left: 0;
+      }
+    }
+    .nav_burger {
+      @include burger-opened();
+    }
+  }
+}
+@mixin nav-main-grid{
+  display: grid;
+  grid-template-columns: auto max-content max-content;
+  grid-auto-rows: minmax(75px, max-content);
+  row-gap: $body-padding;
+  column-gap: $body-padding;
+  align-items: center;
+}
+// <footer incs>
+@mixin foot-cp-nav {
+  width: fit-content;
+  padding: ($body-padding / 2) 0;
+}
+
+@mixin foot-cp-p {
+  & > .foot_copyright-text > p {
+    margin-bottom: 0; // center.
+  }
+  @media (min-width: $sm-break) {
+    & > * {
+      flex-grow: 1;
+    }
+  }
+}
+@mixin foot-cp {
+  width: 100%;
+  text-transform: uppercase;
+  // Auto layout
+  display: flex;
+  justify-content: center;
+  row-gap: $body-padding / 2;
+  font-size: $tiny-text;
+  flex-wrap: wrap;
+  @include foot-cp-p;
+  & > .nav {
+    @include foot-cp-nav;
+  }
+}
+@mixin footer-content-pad {
+  // Solid.
+  padding: 3 * $body-padding $body-padding $body-padding;
+  // Writing mode compatibility
+  padding-block: 3 * $body-padding $body-padding;
+  padding-inline: $body-padding; // l-r.
+}
+
+//<nav>
+.nav {
+  @include nav-base();
+  box-sizing: border-box;
+}
+.nav--flex {
+  @include flex-end-center;
+}
+.nav_social {
+  height: 36px;
+  padding: $body-padding / 2 $body-padding;
+  @include rem-body-pad(false);
+  @include flex-end-center();
+}
+.nav_main {
+  // default
+  min-height: 75px;
+  padding: 0 $body-padding;
+  @include nav-main-grid;
+  @include rem-body-pad(false);
+  // Ordered to make init state default
+  @include main-nav-state;
+  @include main-nav-init-state;
+  @media (min-width: $grid-media-size) {
+    @include flex-end-center();
+  }
+}
+.nav--highlight {
+  width: 100%;
+  @include border(1px, 1px);
+  @include grid-h-center;
+}
+.nav_home-link [data-target] {
+  display: none;
+  @media (min-width: $sm-break) {
+    display: initial;
+  }
+}
+.main-nav_link {
+  @include main-nav_link;
+  display: block;
+  padding: $body-padding 0;
+
+  @media (min-width: $grid-media-size) {
+    display: initial;    
+    padding: initial;
+  }
+}
+.nav_ul{
+  @include hr-list-of-links;
+
+  & > li {
+    font-size: $smaller-text;
+    @include nav-li;
+  }
+}
+
+//footer
+.foot_copyright {
+  @include foot-cp;
+}
+.footer_content {
+  width: 100%;
+  & > * {
+    max-width: $grid-size;
+  }
+  box-sizing: border-box;
+  @include footer-content-pad;
+  @include rem-body-pad(false);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: $body-padding;
+}
+
+// home page--land card
+.land_links > ul {
+  @include hr-list-of-links;
+  height: 100%;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+  justify-content: center;
+  @media (min-width: $grid-media-size) {
+    align-items: start;
+    justify-content: initial;
+  }
+
+  & > li:not(:first-child) {
+    margin-left: 0.5rem;
+  }
+}
+
+.land_formsection {
+  display: grid;
+  align-content: end;
+  & > p:first-of-type {
+    margin-top: 0;
+  }
+}

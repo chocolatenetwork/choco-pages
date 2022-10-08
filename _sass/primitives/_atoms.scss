@@ -1,0 +1,179 @@
+@import 'misc-variables', 'colors', 'typography';
+// atoms
+// mixins go here. Use colors, typography to create bases
+// include default styles for elemental text straight from md
+// start from here and see how you feel. When it grows in complexity, it becomes a molecule.
+
+/*topography atoms*/
+@mixin huge-title {
+  font-size: $hugeTitle;
+}
+
+@mixin bold-text{
+  font-weight: bold; // Pretty much okay.
+}
+@mixin transparent-highlight {
+  background-color: $highlight-color;
+}
+// ----- Effects ------
+@mixin lighten-on-hover {
+  // update if text is black by default
+  color: darken($nav-link-text, 10%);
+  &:hover {
+    color: $nav-link-text;
+  }
+}
+@mixin darken-on-hover {
+  color: $nav-link-text;
+  &:hover {
+    color: darken($nav-link-text, 10%);
+  }
+}
+
+/*Element atoms*/
+@mixin link {
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: $headingBold;
+  color: $text-color;
+}
+@mixin underline {
+  // Get a cool underline effect for nav link current that also fits for a regular link text underline
+  // Then create a variant of link that is no-underline
+}
+@mixin main-nav_link {
+  &[data-state="on"] {
+    color: $wrap-red;
+  }
+}
+
+// <btn>
+@mixin hop {
+  transform: translate(0.5px,-1px);
+}
+//--- mixin vars
+$btn-border: 0.1rem;
+$transition-duration: 0ms;
+$transition-style: ease;
+@mixin button {
+  // No, most styles here aren't for button, include in html instead.
+  font-size: $tiny-text;
+  font-weight: $thick;
+  background-color: $text-color;
+  color: $primary;
+  padding: 0.4rem 0.65rem;
+  display: inline-block;
+  border: $btn-border solid $text-color;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color, border, bottom, left, $transition-duration $transition-style;
+  &:hover {
+    border-color: transparent;
+    // Do a little hop
+    @include hop;
+  }
+}
+
+// merge into button later
+@mixin button-light {
+  display: inline-flex;
+  box-sizing: border-box;
+  white-space: nowrap;
+  padding: 0;
+  border: none;
+  
+  font-size: $tiny-text;
+  font-weight: $thick;
+
+  background-color: var(--btn-bg, #{$text-color});
+  color: var(--btn-txt-col, #{$primary});
+
+  cursor: pointer;
+}
+
+
+// <img>
+@mixin responsive-image($base-w: size, $base-h: size) {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: $base-w;
+  max-width: $base-h;
+}
+// traits
+@mixin smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+@mixin body-default-misc {
+  min-height: 100vh;
+}
+@mixin motion-accessibility {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@mixin border($top: 1px, $bottom: 1px, $style: solid) {
+  // outline
+  border-width: $top 0px $bottom; // only one: re: moxilla
+  border-style: $style;
+  border-color: $greyish;
+}
+::selection {
+  @include transparent-highlight;
+}
+.text--bold {
+  @include bold-text;
+}
+// Clickables
+.link {
+  @include link;
+}
+.link--light {
+  // Modifier, hence it stands alone
+  @include darken-on-hover;
+}
+.link--dark {
+  // Modifier, hence it stands alone
+  @include lighten-on-hover;
+}
+.button {
+  @include button;
+}
+.button--transparent {
+  // include var before @include so it's defined before use inside.
+  --btn-bg: transparent;
+  @include button-light;
+}
+// order must be maintained for overriding.
+.single-content-wrapper a {
+  color: $blue-link;
+}
+.single-content-wrapper a:visited {
+  color:  $visited-link;
+}
+.single-content-wrapper a:active {
+  color: $active-link;
+}
+
+// misc traits describing behaviour of organisms (cannot standalone, hence atomic).
+html:focus-within {
+  @include smooth-scroll;
+}
+body {
+  @include body-default-misc;
+}
+@media (prefers-reduced-motion: reduce) {
+  @include motion-accessibility;
+}

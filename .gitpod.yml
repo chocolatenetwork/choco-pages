@@ -1,0 +1,12 @@
+tasks:
+  - init:  bundle install
+    command: bundle exec jekyll serve --livereload
+vscode:
+  extensions:
+    - sissel.shopify-liquid
+    - ecmel.vscode-html-css
+    - yzhang.markdown-all-in-one
+    - mrmlnc.vscode-scss
+    - VisualStudioExptTeam.vscodeintellicode
+    - christian-kohler.path-intellisense
+    - pucelle.vscode-css-navigation

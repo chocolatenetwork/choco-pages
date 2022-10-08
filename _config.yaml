@@ -1,0 +1,22 @@
+# Implied array of frontmatter values. Each element is a scope denoted by "-" https://jekyllrb.com/docs/configuration/front-matter-defaults
+# Frontmatter defaults
+defaults:
+  - scope:
+      path: ''
+    values:
+      title: Chocolate network
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .vscode/
+  - .gitpod.yml
+  - .gitignore
+  - CHANGELOG.md
+  - README.md
+
+permalink: pretty

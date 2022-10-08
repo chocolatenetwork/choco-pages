@@ -1,0 +1,115 @@
+// think of larger layouts , include overarching grids and the like here.
+@import "molecules";
+
+@mixin head {
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+  background-color: $primary;
+}
+
+// Body layout
+@mixin body-grid($header-width: 100px, $footer-width: 100px) {
+  display: grid;
+  grid-template-rows: fit-content($header-width) auto fit-content($footer-width);
+}
+// Grid template for main container with a max width of 1200.
+@mixin grid-basis {
+  display: grid;
+  gap: $body-padding * 3;
+  max-width: $grid-size;
+  width: 100%;
+  // limit everyone inside, no overflows.
+  & > * {
+    max-width: $grid-size;
+  }
+}
+@mixin splash-area {
+  // defaults, and size limits
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+    "one"
+    "two"
+    "three";
+  @media (min-width: $grid-media-size) {
+    grid-template-areas:
+      //  7 - 5
+
+      "one one one one one one one  three three three three three"
+      "one one one one one one one  three three three three three"
+      "two two two two two bla bla  three three three three three";
+  }
+  & h1 {
+    margin-bottom: 0.64rem; // for p.
+  }
+  & p {
+    margin-bottom: 0.5 * $body-padding; // To complete spacing with links.
+  }
+  text-align: center;
+  @media (min-width: $grid-media-size) {
+    text-align: initial;
+  }
+}
+@mixin last-splash {
+  padding-bottom: $body-padding * 2;
+}
+body {
+  @include body-grid(114px, 300px);
+  justify-items: center;
+}
+
+footer {
+  width: 100%;
+  @include border(1px, 0);
+}
+.head {
+  @include head;
+  @include grid-h-center;
+}
+// ------------------Begin infinite scroll section--------------------
+
+// organisms
+.container {
+  box-sizing: border-box;
+  padding: $body-padding;
+  @include rem-body-pad(false);
+
+  @include grid-basis;
+  // ---Remove this when we have more content -- the container should be at least this big but should also allow for stretching
+  min-height: calc(100vh - 152px);
+}
+.container_last {
+  @include last-splash;
+}
+//               Card1   ---- landing image and text.
+.land {
+  box-sizing: border-box;
+  padding-top: $body-padding * 2;
+  @include rem-body-pad(false);
+  transition: all 0.2s ease-in-out;
+  height: max-content;
+  display: grid;
+  @include grid-col-span-h;
+  row-gap: $body-padding; //  Min spacing.
+  column-gap: inherit;
+  @include splash-area;
+}
+// select first 3 childs for style
+.land_formsection {
+  grid-area: one;
+}
+.land_links {
+  grid-area: two;
+  // Fill in rest of gap w/ image
+  margin-bottom: 2 * $body-padding;
+  @include rem-body-margin(true, false, false);
+}
+.land_image {
+  grid-area: three;
+  @include responsive-image(200px, 420px);
+  justify-self: center;
+  align-self: end;
+}
+//            Card2  ----  About section
+//            Card3  ----  Team section
+// -----------------End infinite scroll section ------------------------\\
