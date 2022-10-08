@@ -8,6 +8,7 @@ layout: default
 {%assign medium = site.data.siteconfig[3] %}
 {%assign litepaper = site.data.siteconfig[4] %}
 {%assign webapp = site.data.siteconfig[5] %}
+{%assign video = site.data.siteconfig[6] %}
 
 <!-- <Home Card> -->
 
