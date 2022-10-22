@@ -37,4 +37,18 @@ bundle exec jekyll serve --livereload
 
 #### Jekyll install fails with `require': cannot load such file -- webrick (LoadError)`
 
-1. See this slution: https://github.com/jekyll/jekyll/issues/8523
+1. See this solution: https://github.com/jekyll/jekyll/issues/8523
+
+### File structure
+
+Nb: This is a WIP, the current way css is structured is too specialised, in the process of refactoring it (this is tracked in issue [#11](https://github.com/chocolatenetwork/choco-pages/issues/11)) and this is the progress:
+
+
+The _scss directory has all the styles for the website, with a few directories:
+
+
+- pages:  This has stylesheets for each page.
+- components: This has stylesheets for the common components in the application 
+- design: This houses stylesheets for the design system; With typography, colors defined separately. Variables are also located here.
+- util: Utility styles?
+
