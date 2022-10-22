@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+}
+.sbp-image {
+  // github image is not centered
+  right: -0.17%;
+  position: relative;
+}
+
+.div-crop {
+  width: min-content;
+  height: min-content;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.supporters {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  img {
+    max-width: 200px;
+  }
+}
