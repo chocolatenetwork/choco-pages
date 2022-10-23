@@ -7,7 +7,6 @@ layout: default
 {%assign twitter = site.data.siteconfig[2] %}
 {%assign medium = site.data.siteconfig[3] %}
 {%assign litepaper = site.data.siteconfig[4] %}
-{%assign webapp = site.data.siteconfig[5] %}
 {%assign video = site.data.siteconfig[6] %}
 
 <!-- <Home Card> -->
@@ -19,7 +18,7 @@ layout: default
   </section>
   <div class="land_links">
     <ul>
-      <li><a href="{{webapp.link}}" target="_blank" rel="noopener noreferrer" class="link button">TRY THE DEMO</a></li>
+      <li><a href="{{video.link}}" target="_blank" rel="noopener noreferrer" class="link button">DEMO VIDEO</a></li>
       <li><a href="{{litepaper.link}}" target="_blank" rel="noopener noreferrer" class="link button">Lite Paper</a></li>
     </ul>
   </div>
