@@ -7,7 +7,7 @@ layout: default
 {%assign twitter = site.data.siteconfig[2] %}
 {%assign medium = site.data.siteconfig[3] %}
 {%assign litepaper = site.data.siteconfig[4] %}
-{%assign video = site.data.siteconfig[6] %}
+{%assign video = site.data.siteconfig[5] %}
 
 <!-- <Home Card> -->
 
