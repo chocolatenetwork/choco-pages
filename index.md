@@ -7,8 +7,7 @@ layout: default
 {%assign twitter = site.data.siteconfig[2] %}
 {%assign medium = site.data.siteconfig[3] %}
 {%assign litepaper = site.data.siteconfig[4] %}
-{%assign webapp = site.data.siteconfig[5] %}
-{%assign video = site.data.siteconfig[6] %}
+{%assign video = site.data.siteconfig[5] %}
 
 <!-- <Home Card> -->
 
@@ -19,7 +18,7 @@ layout: default
   </section>
   <div class="land_links">
     <ul>
-      <li><a href="{{webapp.link}}" target="_blank" rel="noopener noreferrer" class="link button">TRY THE DEMO</a></li>
+      <li><a href="{{video.link}}" target="_blank" rel="noopener noreferrer" class="link button">DEMO VIDEO</a></li>
       <li><a href="{{litepaper.link}}" target="_blank" rel="noopener noreferrer" class="link button">Lite Paper</a></li>
     </ul>
   </div>
@@ -29,7 +28,7 @@ layout: default
   <div class="supporters">
     <h2 class="text--bold">Supporters</h2>
     <div class="div-crop">
-    <a class="flex" target="_blank" href="https://substrate.io/ecosystem/substrate-builders-program/"><img class="sbp-image" src="https://avatars.githubusercontent.com/u/79968355?v=4" alt="sbp-logo"/></a>
+    <a class="flex" target="_blank" href="https://substrate.io/ecosystem/substrate-builders-program/"><img class="sbp-image" src="{{'/assets/images/sbp-image.png' | relative_url}}" alt="sbp-logo"/></a>
     </div>
   </div>
   <div class="container_last">
