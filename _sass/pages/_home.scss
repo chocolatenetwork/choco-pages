@@ -1,17 +1,10 @@
 .flex {
   display: flex;
 }
-.sbp-image {
-  // github image is not centered
-  right: -0.17%;
-  position: relative;
-}
 
 .div-crop {
   width: min-content;
   height: min-content;
-  border-radius: 50%;
-  overflow: hidden;
 }
 
 .supporters {

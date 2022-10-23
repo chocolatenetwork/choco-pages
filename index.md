@@ -29,7 +29,7 @@ layout: default
   <div class="supporters">
     <h2 class="text--bold">Supporters</h2>
     <div class="div-crop">
-    <a class="flex" target="_blank" href="https://substrate.io/ecosystem/substrate-builders-program/"><img class="sbp-image" src="https://avatars.githubusercontent.com/u/79968355?v=4" alt="sbp-logo"/></a>
+    <a class="flex" target="_blank" href="https://substrate.io/ecosystem/substrate-builders-program/"><img class="sbp-image" src="{{'/assets/images/sbp-image.png' | relative_url}}" alt="sbp-logo"/></a>
     </div>
   </div>
   <div class="container_last">
