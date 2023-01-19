@@ -27,10 +27,7 @@ layout: default
     alt="Chocolate X Polkadot and Kusama">
   </div>
   
-  <div class="container_last">
-    <iframe src="https://embeds.beehiiv.com/fa097289-2153-4053-98fe-67403641861d" data-test-id="beehiiv-embed"
-      width="100%" height="400" frameborder="0" scrolling="no" style="margin: 0; background-color: transparent"></iframe>
-  </div>
+
 
 <!-- <Home Card/> -->
 
